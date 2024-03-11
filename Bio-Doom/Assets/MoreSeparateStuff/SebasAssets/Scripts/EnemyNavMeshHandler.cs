@@ -5,9 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyNavMeshHandler : MonoBehaviour
 {
-    [SerializeField] private Transform movePositionTarget;
+    //[SerializeField] private Transform movePositionTarget;
+    public NavMeshAgent navMeshAgent;
 
-    private NavMeshAgent navMeshAgent;
+    public float pathFindingTarget = 5f;
+
+    public Transform centrePoint;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +18,36 @@ public class EnemyNavMeshHandler : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RoamingMovement()
     {
-        navMeshAgent.destination = movePositionTarget.position;
+        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            Vector3 point;
+            if(RandomPoint(centrePoint.position, pathFindingTarget, out point))
+            {
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                navMeshAgent.SetDestination(point);
+            }
+        }
+    }
+
+    private bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+        Vector3 randomPoint = center + Random.insideUnitSphere * range;
+        NavMeshHit hit;
+
+        if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            result = hit.position;
+            return true;
+        }
+
+        result = Vector3.zero;
+        return false;
+    }
+
+    public void ChasingMethod(Transform playerTransform)
+    {
+        navMeshAgent.destination = playerTransform.position;
     }
 }

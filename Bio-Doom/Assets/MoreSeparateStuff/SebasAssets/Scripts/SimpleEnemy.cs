@@ -14,8 +14,13 @@ public class SimpleEnemy : MonoBehaviour
     private State state;
 
     [SerializeField] private GameObject player;
+    [SerializeField] private Vector3 targetMovePosition;
+
+    float targetRange = 50f;
 
     private Vector3 startingPoint;
+
+    EnemyNavMeshHandler enemyPathFinding;
 
     private void Awake()
     {
@@ -24,6 +29,7 @@ public class SimpleEnemy : MonoBehaviour
 
     private void Start()
     {
+        enemyPathFinding = GetComponent<EnemyNavMeshHandler>();
         startingPoint = transform.position;
     }
 
@@ -33,29 +39,31 @@ public class SimpleEnemy : MonoBehaviour
         {
             default:
             case State.Roaming:
-                RoamingPoint();
+                Debug.Log("State Roaming");
+                enemyPathFinding.RoamingMovement();
+                FindTarget();
                 break;
             case State.ChaseTarget:
+                Debug.Log("State Chasing");
+                enemyPathFinding.ChasingMethod(player.transform);
+                OutOfRange();
                 break;
         }
     }
 
-    private Vector3 RoamingPoint()
+    private void FindTarget()
     {
-        return startingPoint + GetRandomDir() * Random.Range(10f, 70f);
-    }
-
-    public static Vector3 GetRandomDir()
-    {
-        return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-    }
-
-    /*private void FindTarget()
-    {
-        float targetRange = 50f;
-        if(Vector3.Distance(transform.position) < targetRange)
+        if(Vector3.Distance(transform.position, player.transform.position) < targetRange)
         {
             state = State.ChaseTarget;
         }
-    }*/
+    }
+
+    private void OutOfRange()
+    {
+        if(Vector3.Distance(transform.position, player.transform.position) > targetRange)
+        {
+            state = State.Roaming;
+        }
+    }
 }
