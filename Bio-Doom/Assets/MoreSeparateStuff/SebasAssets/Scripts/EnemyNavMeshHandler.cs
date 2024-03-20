@@ -9,8 +9,11 @@ public class EnemyNavMeshHandler : MonoBehaviour
     public NavMeshAgent navMeshAgent;
 
     public float pathFindingTarget = 5f;
+    private float pathRandomPosition = 50f;
 
     public Transform centrePoint;
+
+    private Transform[] randomPositionArray;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,7 @@ public class EnemyNavMeshHandler : MonoBehaviour
 
     private bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
+        //Sacar un arreglo de transforms para diferentes enemigos y así posicionarlos mejor sobre un espacio
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
 
