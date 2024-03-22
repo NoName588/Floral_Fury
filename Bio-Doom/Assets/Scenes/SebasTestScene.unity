@@ -6138,7 +6138,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   targetRange: 50
-  targetInCloseRange: 5
+  targetInCloseRange: 10
 --- !u!114 &8024479609234595107
 MonoBehaviour:
   m_ObjectHideFlags: 0
