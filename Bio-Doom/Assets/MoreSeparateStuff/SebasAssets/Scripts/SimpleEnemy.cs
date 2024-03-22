@@ -9,18 +9,23 @@ public class SimpleEnemy : MonoBehaviour
     {
         Roaming,
         ChaseTarget,
+        Attack,
     }
 
     private State state;
 
     [SerializeField] private GameObject player;
     [SerializeField] private Vector3 targetMovePosition;
-
-    float targetRange = 50f;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] float targetRange, targetInCloseRange;
 
     private Vector3 startingPoint;
 
     EnemyNavMeshHandler enemyPathFinding;
+
+    private Animator enemyAnimator;
+
+    private bool playerInRange = false;
 
     private void Awake()
     {
@@ -31,6 +36,7 @@ public class SimpleEnemy : MonoBehaviour
     {
         enemyPathFinding = GetComponent<EnemyNavMeshHandler>();
         startingPoint = transform.position;
+        enemyAnimator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -40,15 +46,39 @@ public class SimpleEnemy : MonoBehaviour
             default:
             case State.Roaming:
                 Debug.Log("State Roaming");
+
                 enemyPathFinding.RoamingMovement();
+
                 FindTarget();
+
                 break;
+
             case State.ChaseTarget:
                 Debug.Log("State Chasing");
+
                 enemyPathFinding.ChasingMethod(player.transform);
+                playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
+
+                TargetCloseRange();
                 OutOfRange();
+
+                break;
+
+            case State.Attack:
+                Debug.Log("State Attack");
+
+                AttackPlayer();
+                playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
+                OutOfRange();
+
                 break;
         }
+    }
+
+    private void AttackPlayer()
+    {
+        enemyAnimator.SetTrigger("Attack");
+        enemyPathFinding.navMeshAgent.SetDestination(transform.position);
     }
 
     private void FindTarget()
@@ -59,11 +89,30 @@ public class SimpleEnemy : MonoBehaviour
         }
     }
 
+    private void TargetCloseRange()
+    {
+
+        if(playerInRange == true)
+        {
+            state = State.Attack;
+        }
+    }
+
     private void OutOfRange()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) > targetRange)
+        if (state == State.ChaseTarget)
         {
-            state = State.Roaming;
+            if (Vector3.Distance(transform.position, player.transform.position) > targetRange)
+            {
+                state = State.Roaming;
+            }
+        }
+        else if(state == State.Attack)
+        {
+            if (!playerInRange)
+            {
+                state = State.ChaseTarget;
+            }
         }
     }
 }
