@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        for (int i = 0; i < Gamepad.all.Count; i++)
+        {
+            Debug.Log(Gamepad.all[i].name);
+        }
+
+  
     }
 
     void Update()
@@ -27,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         rb.MovePosition(transform.position + transform.TransformDirection(movement));
 
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+        float rotation = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
         Quaternion turnRotation = Quaternion.Euler(0f, rotation, 0f);
         rb.MoveRotation(rb.rotation * turnRotation);
 
@@ -37,5 +45,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
     }
 }
