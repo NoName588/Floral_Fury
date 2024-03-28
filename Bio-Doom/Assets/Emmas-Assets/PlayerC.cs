@@ -65,7 +65,7 @@ public class PlayerC : MonoBehaviour
 
         if (L_Press)
         {
-            Attacking_L ();
+            Attacking_L();
         }
         if (R_Press)
         {
@@ -88,20 +88,15 @@ public class PlayerC : MonoBehaviour
     void HandleMovement()
     {
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f);
-
-        if (RunPress && isGrounded) // Jump only if grounded and Run is pressed
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-
         if (MovePress)
         {
-            float moveSpeed = 10.0f; // Adjust this value to control movement speed
+            float moveSpeed = RunPress ? 30.0f : 10.0f; // Adjust movement speed based on RunPress
+
             Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
             rb.MovePosition(rb.position + movement * Time.deltaTime);
         }
     }
+
     public void Attacking_L()
     {
         IsAttack = false;
@@ -111,7 +106,7 @@ public class PlayerC : MonoBehaviour
         {
             Sword.SetActive(true);
             SwordA = true;
-            
+
         }
 
         StartCoroutine(ResetAttack());
@@ -140,6 +135,7 @@ public class PlayerC : MonoBehaviour
         Sword.SetActive(false);
         Vain.SetActive(false);
     }
+
     private void OnEnable()
     {
         input.CharacterControl.Enable();
@@ -150,3 +146,4 @@ public class PlayerC : MonoBehaviour
         input.CharacterControl.Disable();
     }
 }
+
