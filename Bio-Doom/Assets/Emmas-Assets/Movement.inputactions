@@ -51,7 +51,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "1",
+                    "name": "C1",
                     "type": "Button",
                     "id": "7f48ed75-ec42-4721-9c3e-a6119842e020",
                     "expectedControlType": "Button",
@@ -60,9 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "2",
+                    "name": "C2",
                     "type": "Button",
                     "id": "276e295a-1a16-4b19-b729-393677506472",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "f438f71b-2616-4aa0-bd77-f7c9988ed955",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -132,7 +141,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "1",
+                    "action": "C1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -143,7 +152,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "2",
+                    "action": "C2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1750a859-e8aa-4cb4-9c83-3db7b3e6f1d5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
