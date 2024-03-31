@@ -23,11 +23,14 @@ public class EnemyNavMeshHandler : MonoBehaviour
 
     public void RoamingMovement()
     {
-        if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        Debug.Log("Position to go is now running");
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
+            Debug.Log("EnteredCondition");
             Vector3 point;
             if(RandomPoint(centrePoint.position, pathFindingTarget, out point))
             {
+                Debug.Log($"Position to go is {point}");
                 Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                 navMeshAgent.SetDestination(point);
             }
@@ -40,11 +43,16 @@ public class EnemyNavMeshHandler : MonoBehaviour
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
 
-        if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+        Debug.Log("Entered calulated random");
+
+        if(NavMesh.SamplePosition(randomPoint, out hit, 0.0f, NavMesh.AllAreas))
         {
+            Debug.Log("Entered if condition");
             result = hit.position;
             return true;
         }
+
+        Debug.Log("After if");
 
         result = Vector3.zero;
         return false;

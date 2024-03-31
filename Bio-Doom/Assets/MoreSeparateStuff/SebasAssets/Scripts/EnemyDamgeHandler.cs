@@ -18,7 +18,7 @@ public class EnemyDamgeHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log($"Enemy Life is {life}");
     }
 
     public void Attack()

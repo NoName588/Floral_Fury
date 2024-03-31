@@ -1447,7 +1447,7 @@ GameObject:
   - component: {fileID: 1771960959988045049}
   - component: {fileID: 1588210793010983731}
   m_Layer: 8
-  m_Name: EnemyNewMelee
+  m_Name: EnemyDesechable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

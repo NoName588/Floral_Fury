@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SimpleEnemy : MonoBehaviour
+public class MeleeEnemy : MonoBehaviour
 {
     private enum State
     {
-        Roaming,
+        Idle,
         ChaseTarget,
         Attack,
     }
@@ -29,7 +29,7 @@ public class SimpleEnemy : MonoBehaviour
 
     private void Awake()
     {
-        state = State.Roaming;
+        state = State.Idle;
     }
 
     private void Start()
@@ -41,16 +41,16 @@ public class SimpleEnemy : MonoBehaviour
 
     private void Update()
     {
-        
+
 
         switch (state)
         {
             default:
-            case State.Roaming:
-                Debug.Log("State Roaming");
+            case State.Idle:
+                Debug.Log("State Idling");
 
-                enemyPathFinding.RoamingMovement();
-                enemyAnimator.SetTrigger("Walking");
+                //enemyPathFinding.RoamingMovement();
+                enemyAnimator.SetTrigger("Idle");
 
                 FindTarget();
 
@@ -59,11 +59,11 @@ public class SimpleEnemy : MonoBehaviour
             case State.ChaseTarget:
                 Debug.Log("State Chasing");
 
-                enemyAnimator.SetTrigger("Running");
+                //enemyAnimator.SetTrigger("Running");
 
                 enemyPathFinding.ChasingMethod(player.transform);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
-
+                enemyAnimator.SetTrigger("Running");
                 TargetCloseRange();
                 OutOfRange();
 
@@ -90,7 +90,7 @@ public class SimpleEnemy : MonoBehaviour
 
     private void FindTarget()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < targetRange)
+        if (Vector3.Distance(transform.position, player.transform.position) < targetRange)
         {
             state = State.ChaseTarget;
         }
@@ -99,7 +99,7 @@ public class SimpleEnemy : MonoBehaviour
     private void TargetCloseRange()
     {
 
-        if(playerInRange == true)
+        if (playerInRange == true)
         {
             state = State.Attack;
         }
@@ -111,13 +111,15 @@ public class SimpleEnemy : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) > targetRange)
             {
-                state = State.Roaming;
+                enemyAnimator.SetTrigger("RunningExit");
+                state = State.Idle;
             }
         }
-        else if(state == State.Attack)
+        else if (state == State.Attack)
         {
             if (!playerInRange)
             {
+                enemyAnimator.SetTrigger("AttackExit");
                 state = State.ChaseTarget;
             }
         }
