@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CanvaCtl : MonoBehaviour
 {
-    public GameObject objectToDeactivate;
+    //public GameObject objectToDeactivate;
     Movement input;
     bool InteractionX;
 
@@ -33,7 +33,7 @@ public class CanvaCtl : MonoBehaviour
 
     void Activator()
     {
-        objectToDeactivate.SetActive(false);
+        //objectToDeactivate.SetActive(false);
     }
 
     private void OnEnable()

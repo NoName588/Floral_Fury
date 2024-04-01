@@ -125,6 +125,7 @@ public class PlayerC : MonoBehaviour
         else
         {
             Si.SetTrigger("Idle");
+            
         }
     }
 

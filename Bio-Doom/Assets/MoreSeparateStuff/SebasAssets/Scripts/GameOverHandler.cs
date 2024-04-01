@@ -7,6 +7,6 @@ public class GameOverHandler : MonoBehaviour
 {
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 }
