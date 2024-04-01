@@ -1128,6 +1128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ea87a6e2c16d945b8791774c5cbb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyObject: {fileID: 0}
+  enemyScript: {fileID: 0}
+  cameraFollow: {fileID: 0}
 --- !u!114 &530212284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4054,7 +4057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &5689142255301426164
 NavMeshAgent:
   m_ObjectHideFlags: 0
