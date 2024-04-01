@@ -19,7 +19,7 @@ public class MenuGameOver : MonoBehaviour
 
     public void MenuSalir()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }

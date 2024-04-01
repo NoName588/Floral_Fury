@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CosasdePiza/Menuprincipal.unity
+    guid: d673a38a33510104db2e674fa3f2570a
+  - enabled: 1
+    path: Assets/Scenes/EmmaTestScene.unity
+    guid: 6da2084e1aac0cb40940ba8c5560326b
+  - enabled: 1
     path: Assets/Emmas-Assets/Animation_Intro.unity
     guid: fe3297fbbe1ae86439a30885ff28cc67
   - enabled: 0
     path: Assets/Scenes/SebasTestScene3.unity
     guid: 65dd19944ed3d60449b551b3bcad95dd
-  - enabled: 1
-    path: Assets/Scenes/EmmaTestScene.unity
-    guid: 6da2084e1aac0cb40940ba8c5560326b
-  - enabled: 1
-    path: Assets/Scenes/CosasdePiza/Menuprincipal.unity
-    guid: d673a38a33510104db2e674fa3f2570a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
