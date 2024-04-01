@@ -39,8 +39,11 @@ public class PlayerC : MonoBehaviour
 
         input.CharacterControl.Movement.performed += ctx =>
         {
+
+            
             currentmovement = ctx.ReadValue<Vector2>();
             MovePress = currentmovement.x != 0 || currentmovement.y != 0;
+            
         };
 
         input.CharacterControl.Rotation.performed += ctx =>
@@ -63,8 +66,8 @@ public class PlayerC : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         Si = GetComponent<Animator>();
-
         Si.SetTrigger("Idle");
+
     }
     // Update is called once per frame
     void Update()
@@ -75,15 +78,19 @@ public class PlayerC : MonoBehaviour
         if (L_Press && !R_Press)
         {
             Attacking_L();
+            Si.SetTrigger("L");
         }
         else if (!L_Press && R_Press)
         {
             Attacking_R();
+            Si.SetTrigger("R");
         }
         else if (L_Press && R_Press)
         {
             Debug.Log("ataque fuerte");
         }
+      
+       
 
     }
 
@@ -106,9 +113,18 @@ public class PlayerC : MonoBehaviour
             Si.SetTrigger("Walk");
 
             float moveSpeed = RunPress ? 20.0f : 5.0f; // Adjust movement speed based on RunPress
+            if (RunPress)
+            {
+                Si.SetTrigger("Run");
+            }
 
             Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
             rb.MovePosition(rb.position + movement * Time.deltaTime);
+        }
+
+        else
+        {
+            Si.SetTrigger("Idle");
         }
     }
 
@@ -121,7 +137,7 @@ public class PlayerC : MonoBehaviour
         {
             Sword.SetActive(true);
             SwordA = true;
-
+            
         }
 
         StartCoroutine(ResetAttack());
@@ -136,6 +152,7 @@ public class PlayerC : MonoBehaviour
         {
             Vain.SetActive(true);
             SwordA = true;
+            
 
         }
 
