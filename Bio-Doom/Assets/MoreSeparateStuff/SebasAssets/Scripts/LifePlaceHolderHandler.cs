@@ -19,7 +19,6 @@ public class LifePlaceHolderHandler : MonoBehaviour
         if(life == 0)
         {
             gameOverCanvas.SetActive(true);
-            Time.timeScale = 0;
         }
         else if(life > 0)
         {
