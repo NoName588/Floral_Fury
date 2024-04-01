@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeleeEnemy : MonoBehaviour
+public class BossScript : MonoBehaviour
 {
     private enum State
     {
@@ -32,17 +32,17 @@ public class MeleeEnemy : MonoBehaviour
         state = State.Idle;
     }
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         enemyPathFinding = GetComponent<EnemyNavMeshHandler>();
         startingPoint = transform.position;
         enemyAnimator = GetComponent<Animator>();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-
-
         switch (state)
         {
             default:
@@ -80,6 +80,7 @@ public class MeleeEnemy : MonoBehaviour
 
                 break;
         }
+
     }
 
     private void AttackPlayer()

@@ -5,8 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class Loeader : MonoBehaviour
 {
-    private void OnEnable()
+    public GameObject obj;
+    private void Start()
     {
-        SceneManager.LoadScene("SebasTestScene3", LoadSceneMode.Single);
+        obj.SetActive(false);
+    }
+    private void Update()
+    {
+        if(obj.activeSelf == true)
+        {
+            SZS();
+        }
+    }
+
+    private void SZS()
+    {
+        SceneManager.LoadScene("EmmaTestScene", LoadSceneMode.Single);
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine;
 public class LifePlaceHolderHandler : MonoBehaviour
 {
     public int life = 20;
+    [SerializeField] private GameObject gameOverCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameOverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -17,7 +18,8 @@ public class LifePlaceHolderHandler : MonoBehaviour
     {
         if(life == 0)
         {
-            Debug.Log("Current Life Ended");
+            gameOverCanvas.SetActive(true);
+            Time.timeScale = 0;
         }
         else if(life > 0)
         {

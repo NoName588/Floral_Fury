@@ -8,6 +8,7 @@ public class PlayerDamageDealt : MonoBehaviour
     [SerializeField] private int damageToEnemy;
    
     private List<EnemyDamgeHandler> enemiesListDetected = new List<EnemyDamgeHandler>();
+    //private List<EnemyDamgeHandler> bossListDetected = new List<EnemyDamgeHandler>();
 
     // Start is called before the first frame update
 
