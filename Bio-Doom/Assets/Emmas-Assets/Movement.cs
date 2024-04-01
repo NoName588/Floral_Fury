@@ -73,7 +73,7 @@ public partial class @Movement: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""1"",
+                    ""name"": ""C1"",
                     ""type"": ""Button"",
                     ""id"": ""7f48ed75-ec42-4721-9c3e-a6119842e020"",
                     ""expectedControlType"": ""Button"",
@@ -82,9 +82,18 @@ public partial class @Movement: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""2"",
+                    ""name"": ""C2"",
                     ""type"": ""Button"",
                     ""id"": ""276e295a-1a16-4b19-b729-393677506472"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f438f71b-2616-4aa0-bd77-f7c9988ed955"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -154,7 +163,7 @@ public partial class @Movement: IInputActionCollection2, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""1"",
+                    ""action"": ""C1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -165,7 +174,18 @@ public partial class @Movement: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""2"",
+                    ""action"": ""C2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1750a859-e8aa-4cb4-9c83-3db7b3e6f1d5"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -181,8 +201,9 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         m_CharacterControl_Rotation = m_CharacterControl.FindAction("Rotation", throwIfNotFound: true);
         m_CharacterControl_R_Attack = m_CharacterControl.FindAction("R_Attack", throwIfNotFound: true);
         m_CharacterControl_L_Attack = m_CharacterControl.FindAction("L_Attack", throwIfNotFound: true);
-        m_CharacterControl__1 = m_CharacterControl.FindAction("1", throwIfNotFound: true);
-        m_CharacterControl__2 = m_CharacterControl.FindAction("2", throwIfNotFound: true);
+        m_CharacterControl_C1 = m_CharacterControl.FindAction("C1", throwIfNotFound: true);
+        m_CharacterControl_C2 = m_CharacterControl.FindAction("C2", throwIfNotFound: true);
+        m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,8 +270,9 @@ public partial class @Movement: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_Rotation;
     private readonly InputAction m_CharacterControl_R_Attack;
     private readonly InputAction m_CharacterControl_L_Attack;
-    private readonly InputAction m_CharacterControl__1;
-    private readonly InputAction m_CharacterControl__2;
+    private readonly InputAction m_CharacterControl_C1;
+    private readonly InputAction m_CharacterControl_C2;
+    private readonly InputAction m_CharacterControl_Interact;
     public struct CharacterControlActions
     {
         private @Movement m_Wrapper;
@@ -260,8 +282,9 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         public InputAction @Rotation => m_Wrapper.m_CharacterControl_Rotation;
         public InputAction @R_Attack => m_Wrapper.m_CharacterControl_R_Attack;
         public InputAction @L_Attack => m_Wrapper.m_CharacterControl_L_Attack;
-        public InputAction @_1 => m_Wrapper.m_CharacterControl__1;
-        public InputAction @_2 => m_Wrapper.m_CharacterControl__2;
+        public InputAction @C1 => m_Wrapper.m_CharacterControl_C1;
+        public InputAction @C2 => m_Wrapper.m_CharacterControl_C2;
+        public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -286,12 +309,15 @@ public partial class @Movement: IInputActionCollection2, IDisposable
             @L_Attack.started += instance.OnL_Attack;
             @L_Attack.performed += instance.OnL_Attack;
             @L_Attack.canceled += instance.OnL_Attack;
-            @_1.started += instance.On_1;
-            @_1.performed += instance.On_1;
-            @_1.canceled += instance.On_1;
-            @_2.started += instance.On_2;
-            @_2.performed += instance.On_2;
-            @_2.canceled += instance.On_2;
+            @C1.started += instance.OnC1;
+            @C1.performed += instance.OnC1;
+            @C1.canceled += instance.OnC1;
+            @C2.started += instance.OnC2;
+            @C2.performed += instance.OnC2;
+            @C2.canceled += instance.OnC2;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -311,12 +337,15 @@ public partial class @Movement: IInputActionCollection2, IDisposable
             @L_Attack.started -= instance.OnL_Attack;
             @L_Attack.performed -= instance.OnL_Attack;
             @L_Attack.canceled -= instance.OnL_Attack;
-            @_1.started -= instance.On_1;
-            @_1.performed -= instance.On_1;
-            @_1.canceled -= instance.On_1;
-            @_2.started -= instance.On_2;
-            @_2.performed -= instance.On_2;
-            @_2.canceled -= instance.On_2;
+            @C1.started -= instance.OnC1;
+            @C1.performed -= instance.OnC1;
+            @C1.canceled -= instance.OnC1;
+            @C2.started -= instance.OnC2;
+            @C2.performed -= instance.OnC2;
+            @C2.canceled -= instance.OnC2;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(ICharacterControlActions instance)
@@ -341,7 +370,8 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         void OnRotation(InputAction.CallbackContext context);
         void OnR_Attack(InputAction.CallbackContext context);
         void OnL_Attack(InputAction.CallbackContext context);
-        void On_1(InputAction.CallbackContext context);
-        void On_2(InputAction.CallbackContext context);
+        void OnC1(InputAction.CallbackContext context);
+        void OnC2(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

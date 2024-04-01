@@ -12,6 +12,8 @@ public class PlayerC : MonoBehaviour
     Vector2 currentrotate;
     bool MovePress;
     bool RunPress;
+    bool Change1;
+    bool Change2;
     bool RotatePress;
     bool R_Press;
     bool L_Press;
@@ -26,6 +28,7 @@ public class PlayerC : MonoBehaviour
     public GameObject Sword;
     public GameObject Vain;
 
+    private Animator Si;
 
     private Rigidbody rb;
 
@@ -49,6 +52,8 @@ public class PlayerC : MonoBehaviour
         input.CharacterControl.Run.performed += ctx => RunPress = ctx.ReadValueAsButton();
         input.CharacterControl.L_Attack.performed += ctx => L_Press = ctx.ReadValueAsButton();
         input.CharacterControl.R_Attack.performed += ctx => R_Press = ctx.ReadValueAsButton();
+        input.CharacterControl.C1.performed += ctx => Change1 = ctx.ReadValueAsButton();
+        input.CharacterControl.C2.performed += ctx => Change2 = ctx.ReadValueAsButton();
 
     }
     void Start()
@@ -56,6 +61,10 @@ public class PlayerC : MonoBehaviour
         Vain.SetActive(false);
         Sword.SetActive(false);
         rb = GetComponent<Rigidbody>();
+
+        Si = GetComponent<Animator>();
+
+        Si.SetTrigger("Idle");
     }
     // Update is called once per frame
     void Update()
@@ -63,13 +72,17 @@ public class PlayerC : MonoBehaviour
         HandleMovement();
         handleRotation();
 
-        if (L_Press)
+        if (L_Press && !R_Press)
         {
             Attacking_L();
         }
-        if (R_Press)
+        else if (!L_Press && R_Press)
         {
             Attacking_R();
+        }
+        else if (L_Press && R_Press)
+        {
+            Debug.Log("ataque fuerte");
         }
 
     }
@@ -90,7 +103,9 @@ public class PlayerC : MonoBehaviour
 
         if (MovePress)
         {
-            float moveSpeed = RunPress ? 30.0f : 10.0f; // Adjust movement speed based on RunPress
+            Si.SetTrigger("Walk");
+
+            float moveSpeed = RunPress ? 20.0f : 5.0f; // Adjust movement speed based on RunPress
 
             Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
             rb.MovePosition(rb.position + movement * Time.deltaTime);
