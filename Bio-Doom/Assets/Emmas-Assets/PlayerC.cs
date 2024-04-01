@@ -28,6 +28,7 @@ public class PlayerC : MonoBehaviour
     public GameObject Sword;
     public GameObject Vain;
 
+    private Animator Si;
 
     private Rigidbody rb;
 
@@ -60,6 +61,10 @@ public class PlayerC : MonoBehaviour
         Vain.SetActive(false);
         Sword.SetActive(false);
         rb = GetComponent<Rigidbody>();
+
+        Si = GetComponent<Animator>();
+
+        Si.SetTrigger("Idle");
     }
     // Update is called once per frame
     void Update()
@@ -98,6 +103,8 @@ public class PlayerC : MonoBehaviour
 
         if (MovePress)
         {
+            Si.SetTrigger("Walk");
+
             float moveSpeed = RunPress ? 20.0f : 5.0f; // Adjust movement speed based on RunPress
 
             Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
