@@ -6,6 +6,7 @@ public class EnemyHitboxHandler : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private LifePlaceHolderHandler lifePlayer;
+    [SerializeField] private GameObject imageOfFeedback;
 
 
     //[SerializeField] private GameObject hitboxObject;
@@ -26,6 +27,7 @@ public class EnemyHitboxHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            imageOfFeedback.SetActive(true);
             lifePlayer.LifeChange(damage);
         }
     }
