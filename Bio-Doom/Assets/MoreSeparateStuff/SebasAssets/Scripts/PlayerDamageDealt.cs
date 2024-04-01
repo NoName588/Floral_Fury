@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerDamageDealt : MonoBehaviour
+{
+   
+    [SerializeField] private int damageToEnemy;
+   
+    private List<EnemyDamgeHandler> enemiesListDetected = new List<EnemyDamgeHandler>();
+
+    // Start is called before the first frame update
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
+        {
+            EnemyDamgeHandler enemyLifeHandler = other.GetComponent<EnemyDamgeHandler>();
+            if (enemyLifeHandler != null && !enemiesListDetected.Contains(enemyLifeHandler))
+            {
+                enemiesListDetected.Add(enemyLifeHandler);
+                enemyLifeHandler.lifeEnemy -= damageToEnemy;
+            }
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
+        {
+            EnemyDamgeHandler enemyLifeHandler = other.GetComponent<EnemyDamgeHandler>();
+            if (enemyLifeHandler != null && enemiesListDetected.Contains(enemyLifeHandler))
+            {
+                enemiesListDetected.Remove(enemyLifeHandler);
+            }
+        }
+    }
+}

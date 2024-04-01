@@ -41,6 +41,8 @@ public class SimpleEnemy : MonoBehaviour
 
     private void Update()
     {
+        
+
         switch (state)
         {
             default:
@@ -48,6 +50,7 @@ public class SimpleEnemy : MonoBehaviour
                 Debug.Log("State Roaming");
 
                 enemyPathFinding.RoamingMovement();
+                enemyAnimator.SetTrigger("Walking");
 
                 FindTarget();
 
@@ -56,11 +59,15 @@ public class SimpleEnemy : MonoBehaviour
             case State.ChaseTarget:
                 Debug.Log("State Chasing");
 
+                enemyAnimator.SetTrigger("Running");
+
                 enemyPathFinding.ChasingMethod(player.transform);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
 
                 TargetCloseRange();
                 OutOfRange();
+
+                //enemyAnimator.SetTrigger("RunningExit");
 
                 break;
 
