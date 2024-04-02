@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SebasTestScene3.unity
     guid: 65dd19944ed3d60449b551b3bcad95dd
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 9e44e80df9d8fdc4a84a05e3a6ebf4ad
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
