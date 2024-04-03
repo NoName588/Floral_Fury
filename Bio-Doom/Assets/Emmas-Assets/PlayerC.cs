@@ -88,9 +88,15 @@ public class PlayerC : MonoBehaviour
         else if (L_Press && R_Press)
         {
             Debug.Log("ataque fuerte");
+            Si.SetTrigger("Smash");
         }
-      
-       
+
+        else if (!L_Press && !R_Press && !RunPress && !MovePress)
+        {
+            Si.SetTrigger("Idle");
+        }
+
+
 
     }
 
@@ -108,25 +114,25 @@ public class PlayerC : MonoBehaviour
     void HandleMovement()
     {
 
-        if (MovePress)
+        if (MovePress && !RunPress)
         {
             Si.SetTrigger("Walk");
 
-            float moveSpeed = RunPress ? 20.0f : 5.0f; // Adjust movement speed based on RunPress
-            if (RunPress)
-            {
-                Si.SetTrigger("Run");
-            }
+            float moveSpeed = 5.0f; // Adjust movement speed based on RunPress
+
+            Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
+            rb.MovePosition(rb.position + movement * Time.deltaTime);
+        }
+        if (RunPress && MovePress)
+        {
+            Si.SetTrigger("Run");
+
+            float moveSpeed = 20.0f; // Adjust movement speed based on RunPress
 
             Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
             rb.MovePosition(rb.position + movement * Time.deltaTime);
         }
 
-        else
-        {
-            Si.SetTrigger("Idle");
-            
-        }
     }
 
     public void Attacking_L()
