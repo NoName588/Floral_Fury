@@ -317,6 +317,37 @@ Transform:
   - {fileID: 6162442725944504055}
   m_Father: {fileID: 4191778207896814906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1131939186059135991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4276505482801215093}
+  m_Layer: 0
+  m_Name: LookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4276505482801215093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131939186059135991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33377934, y: 4.2569466, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396731960950848781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1187801812759166712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   lifePlayer: {fileID: 0}
+  imageOfFeedback: {fileID: 0}
 --- !u!1 &5570493575830200436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,6 +1921,7 @@ Transform:
   - {fileID: 103380325231358761}
   - {fileID: 3963555987955888233}
   - {fileID: 2270539229043961712}
+  - {fileID: 4276505482801215093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9035767513401068859

@@ -190,9 +190,59 @@ public partial class @Movement: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Rumble"",
+            ""id"": ""daf42ab2-3b2f-4e0b-bcda-2fe1dbba9f96"",
+            ""actions"": [
+                {
+                    ""name"": ""RumbleAction"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b036e09a-ce8f-4590-a807-d5495c98e343"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7080ecbf-5c17-42cf-85a5-c809fad20a49"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75903a6c-3ce4-4533-be6f-40cd6204978f"",
+                    ""path"": ""<DualShockGamepad>/touchpadButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": []
+        },
+        {
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
+            ""devices"": []
+        }
+    ]
 }");
         // CharacterControl
         m_CharacterControl = asset.FindActionMap("CharacterControl", throwIfNotFound: true);
@@ -204,6 +254,9 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         m_CharacterControl_C1 = m_CharacterControl.FindAction("C1", throwIfNotFound: true);
         m_CharacterControl_C2 = m_CharacterControl.FindAction("C2", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        // Rumble
+        m_Rumble = asset.FindActionMap("Rumble", throwIfNotFound: true);
+        m_Rumble_RumbleAction = m_Rumble.FindAction("RumbleAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -363,6 +416,70 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         }
     }
     public CharacterControlActions @CharacterControl => new CharacterControlActions(this);
+
+    // Rumble
+    private readonly InputActionMap m_Rumble;
+    private List<IRumbleActions> m_RumbleActionsCallbackInterfaces = new List<IRumbleActions>();
+    private readonly InputAction m_Rumble_RumbleAction;
+    public struct RumbleActions
+    {
+        private @Movement m_Wrapper;
+        public RumbleActions(@Movement wrapper) { m_Wrapper = wrapper; }
+        public InputAction @RumbleAction => m_Wrapper.m_Rumble_RumbleAction;
+        public InputActionMap Get() { return m_Wrapper.m_Rumble; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RumbleActions set) { return set.Get(); }
+        public void AddCallbacks(IRumbleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RumbleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RumbleActionsCallbackInterfaces.Add(instance);
+            @RumbleAction.started += instance.OnRumbleAction;
+            @RumbleAction.performed += instance.OnRumbleAction;
+            @RumbleAction.canceled += instance.OnRumbleAction;
+        }
+
+        private void UnregisterCallbacks(IRumbleActions instance)
+        {
+            @RumbleAction.started -= instance.OnRumbleAction;
+            @RumbleAction.performed -= instance.OnRumbleAction;
+            @RumbleAction.canceled -= instance.OnRumbleAction;
+        }
+
+        public void RemoveCallbacks(IRumbleActions instance)
+        {
+            if (m_Wrapper.m_RumbleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IRumbleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RumbleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RumbleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public RumbleActions @Rumble => new RumbleActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
+    {
+        get
+        {
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
+        }
+    }
     public interface ICharacterControlActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -373,5 +490,9 @@ public partial class @Movement: IInputActionCollection2, IDisposable
         void OnC1(InputAction.CallbackContext context);
         void OnC2(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IRumbleActions
+    {
+        void OnRumbleAction(InputAction.CallbackContext context);
     }
 }
