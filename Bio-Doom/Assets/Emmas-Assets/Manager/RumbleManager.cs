@@ -5,40 +5,44 @@ using UnityEngine.InputSystem;
 
 public class RumbleManager : MonoBehaviour
 {
-    public static RumbleManager instance;
+    public static RumbleManager Instance { get; private set; } // Singleton with proper access
 
     private Gamepad pad;
-
-    private Coroutine coroutine;
+    private Coroutine rumbleCoroutine; // More descriptive name
 
     private void Awake()
     {
-       if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Ensure only one RumbleManager exists
         }
     }
 
-    public void RumblePulse(float LowFrecuency, float HighFrecuency, float duration)
+    public void Rumble(float lowFrequency, float highFrequency, float duration = 0.5f) // Combined function with optional duration
     {
         pad = Gamepad.current;
 
-        if (pad!= null)
+        if (pad != null)
         {
-            pad.SetMotorSpeeds(LowFrecuency, HighFrecuency);
+            pad.SetMotorSpeeds(lowFrequency, highFrequency);
 
-            coroutine = StartCoroutine(StopRumble(duration, pad));
+            // Stop any previous rumble coroutine before starting a new one
+            if (rumbleCoroutine != null)
+            {
+                StopCoroutine(rumbleCoroutine);
+            }
+
+            rumbleCoroutine = StartCoroutine(StopRumbleAfter(duration, pad));
         }
     }
 
-    private IEnumerator StopRumble(float duration, Gamepad pad) 
+    private IEnumerator StopRumbleAfter(float duration, Gamepad pad)
     {
-        float elapsetime = 0f;
-        while (elapsetime > duration) 
-        { elapsetime += Time.deltaTime; 
-            yield return null;
-        }
-
+        yield return new WaitForSeconds(duration); // Wait for specified duration
         pad.SetMotorSpeeds(0f, 0f);
     }
 }
