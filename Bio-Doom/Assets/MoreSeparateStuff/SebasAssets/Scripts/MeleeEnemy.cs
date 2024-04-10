@@ -50,7 +50,7 @@ public class MeleeEnemy : MonoBehaviour
                 Debug.Log("State Idling");
 
                 //enemyPathFinding.RoamingMovement();
-                enemyAnimator.SetTrigger("Idle");
+                //enemyAnimator.SetTrigger("Idle");
 
                 FindTarget();
 
@@ -60,7 +60,7 @@ public class MeleeEnemy : MonoBehaviour
                 Debug.Log("State Chasing");
 
                 //enemyAnimator.SetTrigger("Running");
-
+                enemyPathFinding.navMeshAgent.isStopped = false;
                 enemyPathFinding.ChasingMethod(player.transform);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
                 enemyAnimator.SetTrigger("Running");
@@ -84,8 +84,10 @@ public class MeleeEnemy : MonoBehaviour
 
     private void AttackPlayer()
     {
+        transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         enemyAnimator.SetTrigger("Attack");
-        enemyPathFinding.navMeshAgent.SetDestination(transform.position);
+        //enemyPathFinding.navMeshAgent.SetDestination(transform.position);
+        enemyPathFinding.navMeshAgent.isStopped = true; //If it is "true", then the navmesh Agent will not move and reset the destination
     }
 
     private void FindTarget()
@@ -111,7 +113,9 @@ public class MeleeEnemy : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) > targetRange)
             {
-                enemyAnimator.SetTrigger("Running");
+                enemyAnimator.ResetTrigger("Running");
+                enemyAnimator.SetTrigger("RunningExit");
+                enemyPathFinding.navMeshAgent.isStopped = true;
                 state = State.Idle;
             }
         }
@@ -119,7 +123,9 @@ public class MeleeEnemy : MonoBehaviour
         {
             if (!playerInRange)
             {
+                enemyAnimator.ResetTrigger("Attack");
                 enemyAnimator.SetTrigger("AttackExit");
+                enemyPathFinding.navMeshAgent.isStopped = false; //If it is false, then it can move freely
                 state = State.ChaseTarget;
             }
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1011,6 +1011,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (6)
@@ -1115,6 +1119,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (4)
@@ -1711,6 +1719,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (7)
@@ -2227,6 +2239,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (3)
@@ -2622,7 +2638,7 @@ Transform:
   m_GameObject: {fileID: 1207574997}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 269.82623, y: 15.5416, z: 230.29738}
+  m_LocalPosition: {x: 270.97537, y: 15.5416, z: 225.37119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2836,7 +2852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277588467}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23873456, y: -0.049893226, z: 0.012283113, w: 0.96972454}
+  m_LocalRotation: {x: 0.18021499, y: -0.066775486, z: 0.012263499, w: 0.9812814}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3076,6 +3092,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (1)
@@ -4347,6 +4367,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel
@@ -4555,6 +4579,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (5)
@@ -4646,7 +4674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853241438}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2563339, y: -0.049661525, z: 0.013188608, w: 0.96522164}
+  m_LocalRotation: {x: 0.19803417, y: -0.06654134, z: 0.013476073, w: 0.9778411}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4983,6 +5011,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (2)
@@ -5153,7 +5185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114241970}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22110306, y: -0.05010784, z: 0.011375956, w: 0.97389597}
+  m_LocalRotation: {x: 0.16238347, y: -0.066986926, z: 0.011050068, w: 0.9843893}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6242,8 +6274,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3107978563525048883}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23873456, y: -0.0498932, z: 0.012283108, w: 0.96972454}
-  m_LocalPosition: {x: 269.82623, y: 15.5416, z: 230.29738}
+  m_LocalRotation: {x: 0.18021499, y: -0.066775486, z: 0.0122635, w: 0.9812814}
+  m_LocalPosition: {x: 270.97537, y: 15.5416, z: 225.37119}
   m_LocalScale: {x: 3.28, y: 3.28, z: 3.28}
   m_ConstrainProportionsScale: 0
   m_Children: []
