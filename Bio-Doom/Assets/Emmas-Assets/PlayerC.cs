@@ -1,6 +1,8 @@
 using Cinemachine;
 using System.Collections;
+using System.Xml.Linq;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,8 +28,7 @@ public class PlayerC : MonoBehaviour
     public bool IsAttack = true;
     public float Cooldown = 1.0f;
     public bool SwordA = false;
-    public GameObject Sword;
-    public GameObject Vain;
+
 
     private Animator Si;
 
@@ -35,6 +36,12 @@ public class PlayerC : MonoBehaviour
 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     private Vector2 currentCameraRotation;
+
+    private Gamepad controller = null;
+    private Transform m_transform;
+    
+    private Vector3 lastAcceleration;
+    private float strongAccelerationThreshold = 0.2f;
 
     // Start is called before the first frame update
     void Awake()
@@ -66,41 +73,51 @@ public class PlayerC : MonoBehaviour
     }
     void Start()
     {
-        Vain.SetActive(false);
-        Sword.SetActive(false);
+
         rb = GetComponent<Rigidbody>();
 
         Si = GetComponent<Animator>();
         Si.SetTrigger("Idle");
+
+        rb = GetComponent<Rigidbody>();
+       
+        controller = DS4.getConroller();
 
     }
     // Update is called once per frame
     void Update()
     {
         HandleMovement();
-        
 
+        /*
         if (L_Press && !R_Press)
         {
             Attacking_L();
+            Si.ResetTrigger("Idle");
             Si.SetTrigger("L");
         }
         else if (!L_Press && R_Press)
         {
             Attacking_R();
+            Si.ResetTrigger("Idle");
             Si.SetTrigger("R");
+
         }
         else if (L_Press && R_Press)
         {
             Debug.Log("ataque fuerte");
+            Si.ResetTrigger("Idle");
             Si.SetTrigger("Smash");
-        }
+        }*/
 
-        else if (!L_Press && !R_Press && !RunPress && !MovePress)
+
+        if (!L_Press && !R_Press && !RunPress && !MovePress)
         {
             Si.SetTrigger("Idle");
             Si.ResetTrigger("Run");
             Si.ResetTrigger("Walk");
+            Si.ResetTrigger("R");
+            Si.ResetTrigger("L");
         }
 
         if (currentCameraRotation.sqrMagnitude > 0.1f)
@@ -114,10 +131,57 @@ public class PlayerC : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if (R_Press)
+        {
+            float accelerationY = rb.velocity.y;  // Access Y-axis velocity
+
+            if (accelerationY > 0)
+            {
+                Debug.Log("ataque fuerte");
+                Si.ResetTrigger("Idle");
+                Si.SetTrigger("Smash");
+                Debug.Log("SMASH");
+            }
+            else if (Mathf.Abs(rb.velocity.x) > 0) // Check for horizontal acceleration separately
+            {
+                Si.ResetTrigger("Idle");
+                Si.SetTrigger("R");
+                Attacking_R();
+                Debug.Log("RIGHT");
+            }
+            else if (0 > Mathf.Abs(rb.velocity.x)) // Check for horizontal acceleration separately
+            {
+                Si.ResetTrigger("Idle");
+                Si.SetTrigger("L");
+                Attacking_L();
+                Debug.Log("LEFT");
+            }
+
+        }
+        else
+        {
+            Si.SetTrigger("Idle");
+            Si.ResetTrigger("Run");
+            Si.ResetTrigger("Walk");
+            Si.ResetTrigger("R");
+            Si.ResetTrigger("L");
+        }
+
+    }
+
     void HandleMovement()
     {
         // Determine movement direction
         Vector3 movement = CalculateMovement(currentmovement);
+
+        // Check if joystick points down (considering a threshold for accuracy)
+        if (currentmovement.y < -0.5f)
+        {
+            // Invert the forward direction if joystick points down
+            movement = -transform.forward * Mathf.Abs(movement.y);
+        }
 
         // Set animation trigger based on movement and RunPress
         if (movement.magnitude > 0.1f)
@@ -135,8 +199,11 @@ public class PlayerC : MonoBehaviour
 
         // Apply movement with smoother rotation
         rb.MovePosition(rb.position + movement * Time.deltaTime * moveSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), Time.deltaTime * 10f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), Time.deltaTime * 5f);
     }
+
+    //AYUDENMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 
     Vector3 CalculateMovement(Vector2 currentMovement)
     {
@@ -148,7 +215,7 @@ public class PlayerC : MonoBehaviour
     {
         IsAttack = false;
 
-            Sword.SetActive(true);
+
         
 
         StartCoroutine(ResetAttack());
@@ -158,7 +225,7 @@ public class PlayerC : MonoBehaviour
     {
         IsAttack = false;
 
-        Vain.SetActive(true);
+
     
 
         StartCoroutine(ResetAttack());
@@ -169,8 +236,13 @@ public class PlayerC : MonoBehaviour
         yield return new WaitForSeconds(Cooldown);
         IsAttack = true;
         SwordA = false;
-        Sword.SetActive(false);
-        Vain.SetActive(false);
+
+        Si.SetTrigger("Idle");
+        Si.ResetTrigger("Run");
+        Si.ResetTrigger("Walk");
+        Si.ResetTrigger("R");
+        Si.ResetTrigger("L");
+
     }
 
     private void OnEnable()
@@ -182,5 +254,7 @@ public class PlayerC : MonoBehaviour
     {
         input.CharacterControl.Disable();
     }
+
+
 }
 
