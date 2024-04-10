@@ -8,7 +8,8 @@ public class InputTest : MonoBehaviour
     private Gamepad controller = null;
     private Transform m_transform;
     Rigidbody rb;
-    Vector3 lastAcceleration;
+    private Vector3 lastAcceleration;
+    private float accelerationThreshold = 0.2f;
 
     void Start()
     {
@@ -50,7 +51,12 @@ public class InputTest : MonoBehaviour
             lastAcceleration = acceleration;
 
             // Mostrar datos por consola
-            Debug.Log("Aceleración: " + acceleration);
+            float xAcceleration = acceleration.x;
+            if (Mathf.Abs(xAcceleration) > accelerationThreshold)
+            {
+                string message = xAcceleration > 0 ? "Brusque acceleration to the right!" : "Brusque acceleration to the left!";
+                Debug.Log(message);
+            }
         }
 
 

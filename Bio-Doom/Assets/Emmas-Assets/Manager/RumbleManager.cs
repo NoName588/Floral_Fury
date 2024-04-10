@@ -22,7 +22,7 @@ public class RumbleManager : MonoBehaviour
         }
     }
 
-    public void Rumble(float lowFrequency, float highFrequency, float duration = 0.5f) // Combined function with optional duration
+    public void Rumble(float lowFrequency, float highFrequency, float duration = 0.3f) // Combined function with optional duration
     {
         pad = Gamepad.current;
 
