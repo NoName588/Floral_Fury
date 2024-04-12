@@ -74,8 +74,6 @@ public class PlayerC : MonoBehaviour
     void Start()
     {
 
-        rb = GetComponent<Rigidbody>();
-
         Si = GetComponent<Animator>();
         Si.SetTrigger("Idle");
 

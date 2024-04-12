@@ -15,12 +15,18 @@ public class InputTest : MonoBehaviour
     public GameObject upObject; // Reference to the upward GameObject
 
     private bool spaceButtonPressed = false;
+    public Animator animator;
 
     void Start()
     {
+        animator.SetTrigger("Idle");
+
         rb = GetComponent<Rigidbody>();
         thisTransform = this.transform;
         controller = DS4.getConroller(); // Assuming DS4 is your gamepad class
+
+        // Obtener la referencia al Animator
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -50,6 +56,19 @@ public class InputTest : MonoBehaviour
 
                 upObject.SetActive(false);
 
+                // Llamar a métodos del Animator según sea necesario
+                // Por ejemplo, activar una animación llamada "Left" si la aceleración es hacia la izquierda
+                if (acceleration.x < 0)
+                {
+                    animator.SetTrigger("L");
+                    animator.ResetTrigger("R");
+                }
+                else
+                {
+                    animator.SetTrigger("R");
+                    animator.ResetTrigger("L");
+                }
+
                 // Optional: Visual feedback or sound effects (consider separate methods)
                 // Provide visual or audio cues to indicate object activation
             }
@@ -62,14 +81,28 @@ public class InputTest : MonoBehaviour
                 // Activate upward object
                 upObject.SetActive(true);
 
+                // Llamar a métodos del Animator según sea necesario
+                // Por ejemplo, activar una animación llamada "Up" si la aceleración es hacia arriba
+                animator.SetTrigger("Smash");
+                animator.ResetTrigger("R");
+                animator.ResetTrigger("L");
+
                 // Optional: Visual or audio feedback for upward object activation
             }
-         
+            else
+            {
+                animator.SetTrigger("Idle");
+                animator.ResetTrigger("R");
+                animator.ResetTrigger("L");
+                animator.ResetTrigger("Smash");
+
+            }
 
             lastAcceleration = acceleration;
         }
     }
 }
+
 
 
 
