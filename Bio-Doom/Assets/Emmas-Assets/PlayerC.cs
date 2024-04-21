@@ -28,7 +28,7 @@ public class PlayerC : MonoBehaviour
     public GameObject Sword;
     public GameObject Vain;
 
-    private Animator Si;
+    private Animator animator;
 
     private Rigidbody rb;
 
@@ -39,11 +39,8 @@ public class PlayerC : MonoBehaviour
 
         input.CharacterControl.Movement.performed += ctx =>
         {
-
-            
             currentmovement = ctx.ReadValue<Vector2>();
             MovePress = currentmovement.x != 0 || currentmovement.y != 0;
-            
         };
 
         input.CharacterControl.Rotation.performed += ctx =>
@@ -65,11 +62,11 @@ public class PlayerC : MonoBehaviour
         Sword.SetActive(false);
         rb = GetComponent<Rigidbody>();
 
-        Si = GetComponent<Animator>();
-        Si.SetTrigger("Idle");
+        animator = GetComponent<Animator>();
+        animator.SetTrigger("Idle");
 
     }
-    // Update is called once per frame
+
     void Update()
     {
         HandleMovement();
@@ -78,26 +75,21 @@ public class PlayerC : MonoBehaviour
         if (L_Press && !R_Press)
         {
             Attacking_L();
-            Si.SetTrigger("L");
+            animator.SetTrigger("L");
         }
         else if (!L_Press && R_Press)
         {
             Attacking_R();
-            Si.SetTrigger("R");
+            animator.SetTrigger("R");
         }
         else if (L_Press && R_Press)
         {
             Debug.Log("ataque fuerte");
-            Si.SetTrigger("Smash");
+            animator.SetTrigger("Smash");
         }
-
         else if (!L_Press && !R_Press && !RunPress && !MovePress)
-        {
-            Si.SetTrigger("Idle");
-        }
-
-
-
+            animator.SetTrigger("Idle");
+        
     }
 
     void handleRotation()
@@ -116,7 +108,7 @@ public class PlayerC : MonoBehaviour
 
         if (MovePress && !RunPress)
         {
-            Si.SetTrigger("Walk");
+            animator.SetTrigger("Walk");
 
             float moveSpeed = 5.0f; // Adjust movement speed based on RunPress
 
@@ -125,7 +117,7 @@ public class PlayerC : MonoBehaviour
         }
         if (RunPress && MovePress)
         {
-            Si.SetTrigger("Run");
+            animator.SetTrigger("Run");
 
             float moveSpeed = 20.0f; // Adjust movement speed based on RunPress
 
