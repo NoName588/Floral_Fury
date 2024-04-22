@@ -28,7 +28,7 @@ public class EnemyNavMeshHandler : MonoBehaviour
         {
             Debug.Log("EnteredCondition");
             Vector3 point;
-            if(RandomPoint(centrePoint.position, pathFindingTarget, out point))
+            if(RandomPoint(centrePoint.position, pathFindingTarget, out point)) // NavMesh.SamplePosition(transform.position + randomPoint, out hit, 10f, NavMesh.AllAreas);
             {
                 Debug.Log($"Position to go is {point}");
                 Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
