@@ -6156,11 +6156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc62426aae5a5034bbd6134af6d35710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolStandRange: {x: 3, y: 6}
+  patrolStand: 6
   patrolSpeed: 3
   chaseSpeed: 6
   detectionRadius: 10
   detectionAngle: 90
   patrolRadius: 5
+  alphaPatrolRadius: 8
 --- !u!195 &955525182
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7932,7 +7935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208674857}
   m_Layer: 0
-  m_Name: ---------------------- (5)
+  m_Name: ---------------------- (5) ----------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
