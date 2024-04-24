@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public static PlayerController Instance;
     public float speed = 50f; 
     public float rotationSpeed = 100f; 
     public float jumpForce = 8f; 
@@ -13,16 +13,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     private bool isGrounded;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         for (int i = 0; i < Gamepad.all.Count; i++)
-        {
             Debug.Log(Gamepad.all[i].name);
-        }
-
-  
     }
 
     void Update()
@@ -42,9 +44,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-
     }
 }

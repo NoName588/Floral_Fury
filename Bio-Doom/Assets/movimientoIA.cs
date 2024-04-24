@@ -36,13 +36,9 @@ public class EnemigoIA : MonoBehaviour
 
         
         if (distanciaAlJugador <= distanciaDeteccion)
-        {
             persiguiendo = true;
-        }
         else
-        {
             persiguiendo = false;
-        }
 
         
         if (persiguiendo)
