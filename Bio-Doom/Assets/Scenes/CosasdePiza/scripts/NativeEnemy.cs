@@ -26,7 +26,8 @@ public class NativeEnemy : MonoBehaviour
     private float currentTimePatrol = 0;
     private bool isChasing;
     private bool isAttanking;
-   
+    private bool doOnceCoroutine = true;
+
     void Start()
     {
         centerPoint = transform.position;
@@ -36,16 +37,9 @@ public class NativeEnemy : MonoBehaviour
 
     void Update()
     {
-        
-        AttackRange();
         StateMachine();
+        LookForPlayer();
     }
-
-    private void AttackRange()
-    {
-        
-    }
-
 
     private void StateMachine()
     {
@@ -65,21 +59,6 @@ public class NativeEnemy : MonoBehaviour
         }
     }
 
-    private void Patroling()
-    {
-        agent.speed = patrolSpeed;
-        StartCoroutine(GoToRandomPoint());
-    }
-
-    private void Chasing()
-    {
-        isChasing = true;
-        agent.speed = chaseSpeed;
-        Vector3 behindPlayer = player.position - player.forward * 2f; // Posición detrás del jugador
-        agent.SetDestination(behindPlayer);
-        LookForPlayer();
-    }
-
     private void LookForPlayer()
     {
         Vector3 enemyPosition = transform.position;
@@ -90,9 +69,66 @@ public class NativeEnemy : MonoBehaviour
         {
             if (Vector3.Dot(toPlayer.normalized, transform.forward) > Mathf.Cos(detectionAngle * 0.5f * Mathf.Deg2Rad))
                 nativeState = NativeEnemyStates.Chasing;
+            else
+            {
+                doOnceCoroutine = true;
+                setCenter = true;
+                nativeState = NativeEnemyStates.Patroling;
+            }
         }
         else
+        {
+            doOnceCoroutine = true;
+            setCenter = true;
             nativeState = NativeEnemyStates.Patroling;
+        }
+    }
+
+    private void Patroling()
+    {
+        agent.speed = patrolSpeed;
+        if (doOnceCoroutine)
+        {
+            doOnceCoroutine = false;
+            StartCoroutine(GoToRandomPoint());
+        }
+    }
+
+    private IEnumerator GoToRandomPoint()
+    {
+        while (true)
+        {
+            if (nativeState == NativeEnemyStates.Patroling)
+            {
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    Vector3 point;
+                    if (RandomPoint(centerPoint, patrolRadius, out point))
+                    {
+                        float distanceToPoint = Vector3.Distance(transform.position, point);
+                        if (distanceToPoint <= patrolRadius)
+                        {
+                            Debug.DrawLine(point, Vector2.one, Color.blue, 1.0f);
+                            agent.SetDestination(point);
+                        }
+                    }
+                }
+            }
+            yield return new WaitForSeconds(Random.Range(patrolStandRangeTime.x, patrolStandRangeTime.y));
+        }
+    }
+
+    private void Chasing()
+    {
+        LookRotationTarget();
+        isChasing = true;
+        agent.speed = chaseSpeed;
+        Vector3 behindPlayer = player.position - player.forward * attackRadius; // Posición detrás del jugador
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.SetDestination(behindPlayer);
+            nativeState = NativeEnemyStates.Attacking;
+        }
     }
 
     private void Attacking()
@@ -102,28 +138,12 @@ public class NativeEnemy : MonoBehaviour
 
     private void LookRotationTarget()
     {
-        attackDirection = player.position - agent.transform.position;
+        attackDirection = player.position - transform.position;
         attackDirection.y = 0f;
         Quaternion targetRotation = Quaternion.LookRotation(attackDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * angularSpeed);
     }
 
-    private IEnumerator GoToRandomPoint()
-    {
-        while (true)
-        {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                Vector3 point;
-                if (RandomPoint(centerPoint, patrolRadius, out point))
-                {
-                    Debug.DrawLine(point, Vector2.one, Color.blue, 1.0f);
-                    agent.SetDestination(point);
-                }
-            }
-            yield return new WaitForSeconds(Random.Range(patrolStandRangeTime.x, patrolStandRangeTime.y));
-        }
-    }
 
     private bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
