@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -14,7 +15,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdTest : MonoBehaviour
     {
 
         
@@ -109,12 +110,10 @@ namespace StarterAssets
 
 
 
-
-
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        private Animator Si;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -151,16 +150,16 @@ namespace StarterAssets
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
-            _hasAnimator = TryGetComponent(out _animator);
+            _hasAnimator = TryGetComponent(out Si);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-#endif
+#endif  
+            Si.SetTrigger("Idle");
 
-            AssignAnimationIDs();
 
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
@@ -169,16 +168,20 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
+            _hasAnimator = TryGetComponent(out Si);
 
             JumpAndGravity();
             GroundedCheck();
             Move();
             CombatSystemR();
+            CombatSystemL();
 
             if (_input.jump) { Debug.Log("salto"); }
 
-
+            if (!_input.jump && !_input.sprint && !_input.Rattack && !_input.Lattack )
+            {
+                Si.SetTrigger("Idle");
+            }
             //if (R_Press) { Debug.Log("ataque izquierdp"); }
         }
 
@@ -187,16 +190,6 @@ namespace StarterAssets
             CameraRotation();
         }
 
-        private void AssignAnimationIDs()
-        {
-            _animIDSpeed = Animator.StringToHash("Speed");
-            _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
-            _animIDFreeFall = Animator.StringToHash("FreeFall");
-            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-            _animR = Animator.StringToHash("R");
-            _animL = Animator.StringToHash("L");
-        }
 
         private void GroundedCheck()
         {
@@ -209,7 +202,7 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDGrounded, Grounded);
+                
             }
         }
 
@@ -244,7 +237,7 @@ namespace StarterAssets
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.move == Vector2.zero) targetSpeed = 0.0f; Si.SetTrigger("Idle");
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -252,6 +245,7 @@ namespace StarterAssets
             float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
+            
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
                 currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -286,6 +280,7 @@ namespace StarterAssets
 
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if(_hasAnimator) { Si.SetTrigger(_input.sprint ? "Run" : "Walk"); }
             }
 
 
@@ -295,12 +290,10 @@ namespace StarterAssets
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+            Si.ResetTrigger("Run");
+            Si.ResetTrigger("Walk");
             // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
+
            
         }
 
@@ -336,32 +329,42 @@ namespace StarterAssets
 
         private void CombatSystemR()
         {
-          
-
-                // update animator if using character
+            if (_input.Rattack && !_input.Lattack)
+            {
+                Debug.Log("RIGHT");
+                // Update animator based on character existence
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animR, false);
+
+                    Si.SetTrigger("R");
+                    Si.ResetTrigger("L");
+                    Si.ResetTrigger("Idle");
                 }
-
-                if (_input.Rattack && !_input.Lattack)
-                {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    Debug.Log("RIGHT");
-
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animR, true);
-                    }
-                }
+            }
 
 
-            _animator.SetBool(_animR, false);
             _input.Rattack = false;
-
         }
 
+
+        private void CombatSystemL()
+        {
+
+
+            if (!_input.Rattack && _input.Lattack)
+            {
+                Debug.Log("LEFT");
+                // Update animator based on character existence
+                if (_hasAnimator)
+                {
+                    Si.SetTrigger("L");
+                    Si.ResetTrigger("R");
+                    Si.ResetTrigger("Idle");
+                }
+            }
+            _input.Lattack = false;
+
+        }
 
         private void JumpAndGravity()
         {
@@ -371,11 +374,7 @@ namespace StarterAssets
                 _fallTimeoutDelta = FallTimeout;
 
                 // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                }
+
 
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
@@ -392,7 +391,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDJump, true);
+
                     }
                 }
 
@@ -414,14 +413,7 @@ namespace StarterAssets
                 {
                     _fallTimeoutDelta -= Time.deltaTime;
                 }
-                else
-                {
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                    }
-                }
+
 
                 // if we are not grounded, do not jump
                 _input.jump = false;

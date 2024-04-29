@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System;
 
 public class PlayerC : MonoBehaviour
 {
@@ -37,11 +37,18 @@ public class PlayerC : MonoBehaviour
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     private Vector2 currentCameraRotation;
 
+    public bool RotPress;
+
     private Gamepad controller = null;
     private Transform m_transform;
     
     private Vector3 lastAcceleration;
     private float strongAccelerationThreshold = 0.2f;
+    private float RotationSmoothTime;
+
+    public float RunSpeed = 5.0f;
+    public float WalkSpeed = 2.0f;
+    public float AccelerationRate { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
@@ -60,7 +67,7 @@ public class PlayerC : MonoBehaviour
         input.CharacterControl.Rotation.performed += ctx =>
         {
             currentCameraRotation = ctx.ReadValue<Vector2>();
-            MovePress = currentrotate.x != 0 || currentrotate.y != 0;
+            RotPress = currentrotate.x != 0 || currentrotate.y != 0;
         };
 
         input.CharacterControl.Run.performed += ctx => RunPress = ctx.ReadValueAsButton();
@@ -168,11 +175,10 @@ public class PlayerC : MonoBehaviour
         }
 
     }
-
     void HandleMovement()
     {
         // Determine movement direction
-        Vector3 movement = CalculateMovement(currentmovement);
+        Vector3 movement = transform.right * currentmovement.x + transform.forward * currentmovement.y;
 
         // Check if joystick points down (considering a threshold for accuracy)
         if (currentmovement.y < -0.5f)
@@ -200,13 +206,8 @@ public class PlayerC : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), Time.deltaTime * 5f);
     }
 
-    //AYUDENMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
-    Vector3 CalculateMovement(Vector2 currentMovement)
-    {
-        return transform.right * currentMovement.x + transform.forward * currentMovement.y;
-    }
 
 
     public void Attacking_L()
