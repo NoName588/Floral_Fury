@@ -336,31 +336,23 @@ namespace StarterAssets
 
         private void CombatSystemR()
         {
-          
+            // Check for right attack input
+            if (_input.Rattack && !_input.Lattack)
+            {
+                // Trigger "R" animation
+                _animator.SetBool(_animR, true);
 
-                // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animR, false);
-                }
+                // Reset the attack input
+                _input.Rattack = false;
+            }
 
-                if (_input.Rattack && !_input.Lattack)
-                {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    Debug.Log("RIGHT");
-
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animR, true);
-                    }
-                }
-
-
-            _animator.SetBool(_animR, false);
-            _input.Rattack = false;
-
+            // Reset the "R" animation after the animation completes
+            if (!_animator.GetBool(_animR))
+            {
+                _animator.SetBool(_animR, false);
+            }
         }
+
 
 
         private void JumpAndGravity()

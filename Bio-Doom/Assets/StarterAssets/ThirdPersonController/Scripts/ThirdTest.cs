@@ -178,10 +178,7 @@ namespace StarterAssets
 
             if (_input.jump) { Debug.Log("salto"); }
 
-            if (!_input.jump && !_input.sprint && !_input.Rattack && !_input.Lattack )
-            {
-                Si.SetTrigger("Idle");
-            }
+
             //if (R_Press) { Debug.Log("ataque izquierdp"); }
         }
 
@@ -232,12 +229,19 @@ namespace StarterAssets
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float movementBlend = Mathf.InverseLerp(MoveSpeed, SprintSpeed, _speed);
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f; Si.SetTrigger("Idle");
+            if (_input.move == Vector2.zero)
+            {
+
+                targetSpeed = 0.0f; 
+                if(_hasAnimator) Si.SetTrigger("Idle");
+                return;
+            }
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -280,18 +284,38 @@ namespace StarterAssets
 
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-                if(_hasAnimator) { Si.SetTrigger(_input.sprint ? "Run" : "Walk"); }
+                
             }
 
-
+            if (_hasAnimator)
+            {
+                // Idle when no movement
+                if (_input.move == Vector2.zero)
+                {
+                    Si.SetTrigger("Idle");
+                    Si.ResetTrigger("Walk");
+                    Si.ResetTrigger("Run");
+                }
+                // Walk when moving slowly
+                else if (_speed < SprintSpeed * 0.5f) // Adjust threshold as needed
+                {
+                    Si.SetTrigger("Walk");
+                    Si.ResetTrigger("Run");
+                }
+                // Run when moving fast
+                else
+                {
+                    Si.SetTrigger("Run");
+                    Si.ResetTrigger("Walk");
+                }
+            }
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-            Si.ResetTrigger("Run");
-            Si.ResetTrigger("Walk");
+
             // update animator if using character
 
            
