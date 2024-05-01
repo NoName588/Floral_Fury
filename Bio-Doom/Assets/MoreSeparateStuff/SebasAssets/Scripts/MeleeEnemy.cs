@@ -61,9 +61,10 @@ public class MeleeEnemy : MonoBehaviour
 
                 //enemyAnimator.SetTrigger("Running");
                 enemyPathFinding.navMeshAgent.isStopped = false;
+                enemyAnimator.SetTrigger("Running");
                 enemyPathFinding.ChasingMethod(player.transform);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
-                enemyAnimator.SetTrigger("Running");
+                //enemyAnimator.SetTrigger("Running");
                 TargetCloseRange();
                 OutOfRange();
 
