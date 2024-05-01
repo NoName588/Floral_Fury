@@ -1,7 +1,9 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class PlayerC : MonoBehaviour
 {
@@ -10,18 +12,17 @@ public class PlayerC : MonoBehaviour
 
     Vector2 currentmovement;
     Vector2 currentrotate;
+
     bool MovePress;
     bool RunPress;
     bool Change1;
     bool Change2;
-    bool RotatePress;
     bool R_Press;
     bool L_Press;
     public float jumpForce = 8f;
     bool isGrounded = false;
 
-    public Animator swordAnimator;
-    public Animator VainCheck;
+   
     public bool IsAttack = true;
     public float Cooldown = 1.0f;
     public bool SwordA = false;
@@ -31,6 +32,9 @@ public class PlayerC : MonoBehaviour
     private Animator Si;
 
     private Rigidbody rb;
+
+    private CinemachineVirtualCamera cinemachineVirtualCamera;
+    private Vector2 currentCameraRotation;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,7 +52,7 @@ public class PlayerC : MonoBehaviour
 
         input.CharacterControl.Rotation.performed += ctx =>
         {
-            currentrotate = ctx.ReadValue<Vector2>();
+            currentCameraRotation = ctx.ReadValue<Vector2>();
             MovePress = currentrotate.x != 0 || currentrotate.y != 0;
         };
 
@@ -58,6 +62,7 @@ public class PlayerC : MonoBehaviour
         input.CharacterControl.C1.performed += ctx => Change1 = ctx.ReadValueAsButton();
         input.CharacterControl.C2.performed += ctx => Change2 = ctx.ReadValueAsButton();
 
+        cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
     void Start()
     {
@@ -73,7 +78,7 @@ public class PlayerC : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        handleRotation();
+        
 
         if (L_Press && !R_Press)
         {
@@ -94,58 +99,57 @@ public class PlayerC : MonoBehaviour
         else if (!L_Press && !R_Press && !RunPress && !MovePress)
         {
             Si.SetTrigger("Idle");
+            Si.ResetTrigger("Run");
+            Si.ResetTrigger("Walk");
         }
 
+        if (currentCameraRotation.sqrMagnitude > 0.1f)
+        {
+            // Convertir la entrada del joystick a una rotación
+            Vector3 cameraRotation = new Vector3(currentCameraRotation.y, currentCameraRotation.x, 0);
 
+            // Aplicar la rotación a la cámara Cinemachine
+            cinemachineVirtualCamera.transform.Rotate(cameraRotation * Time.deltaTime * 5f);
+        }
 
-    }
-
-    void handleRotation()
-    {
-        Vector3 currentPosition = transform.position;
-
-        Vector3 newPosition = new Vector3(currentrotate.x, 0, currentrotate.y);
-
-        Vector3 positionLookAt = currentPosition + newPosition;
-
-        transform.LookAt(positionLookAt);
     }
 
     void HandleMovement()
     {
+        // Determine movement direction
+        Vector3 movement = CalculateMovement(currentmovement);
 
-        if (MovePress && !RunPress)
+        // Set animation trigger based on movement and RunPress
+        if (movement.magnitude > 0.1f)
         {
-            Si.SetTrigger("Walk");
-
-            float moveSpeed = 5.0f; // Adjust movement speed based on RunPress
-
-            Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
-            rb.MovePosition(rb.position + movement * Time.deltaTime);
+            Si.SetTrigger(RunPress ? "Run" : "Walk");
         }
-        if (RunPress && MovePress)
+        else
         {
-            Si.SetTrigger("Run");
-
-            float moveSpeed = 20.0f; // Adjust movement speed based on RunPress
-
-            Vector3 movement = transform.right * currentmovement.x * moveSpeed + transform.forward * currentmovement.y * moveSpeed;
-            rb.MovePosition(rb.position + movement * Time.deltaTime);
+            Si.ResetTrigger("Walk");
+            Si.ResetTrigger("Run");
         }
 
+        // Calculate speed based on RunPress
+        float moveSpeed = RunPress ? 20.0f : 5.0f;
+
+        // Apply movement with smoother rotation
+        rb.MovePosition(rb.position + movement * Time.deltaTime * moveSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), Time.deltaTime * 10f);
     }
+
+    Vector3 CalculateMovement(Vector2 currentMovement)
+    {
+        return transform.right * currentMovement.x + transform.forward * currentMovement.y;
+    }
+
 
     public void Attacking_L()
     {
         IsAttack = false;
 
-        // Verifica si el animator está asignado
-        if (swordAnimator != null)
-        {
             Sword.SetActive(true);
-            SwordA = true;
-            
-        }
+        
 
         StartCoroutine(ResetAttack());
     }
@@ -154,14 +158,8 @@ public class PlayerC : MonoBehaviour
     {
         IsAttack = false;
 
-        // Verifica si el animator está asignado
-        if (swordAnimator != null)
-        {
-            Vain.SetActive(true);
-            SwordA = true;
-            
-
-        }
+        Vain.SetActive(true);
+    
 
         StartCoroutine(ResetAttack());
     }
