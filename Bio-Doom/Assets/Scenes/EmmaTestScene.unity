@@ -1887,6 +1887,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (4)
@@ -2800,6 +2804,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (7)
@@ -3481,6 +3489,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (3)
@@ -4576,6 +4588,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (1)
@@ -10924,6 +10940,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel
@@ -11227,6 +11247,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (5)
@@ -16854,6 +16878,10 @@ PrefabInstance:
       propertyPath: centrePoint
       value: 
       objectReference: {fileID: 1111848763}
+    - target: {fileID: 2737172750532592303, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
       propertyPath: m_Name
       value: EnemyNewModel (2)
