@@ -50,7 +50,7 @@ public class BossScript : MonoBehaviour
                 Debug.Log("State Idling");
 
                 //enemyPathFinding.RoamingMovement();
-                enemyAnimator.SetTrigger("Idle");
+                enemyAnimator.SetTrigger("Running");
 
                 FindTarget();
 
@@ -72,7 +72,7 @@ public class BossScript : MonoBehaviour
                 break;
 
             case State.Attack:
-                Debug.Log("State Attack");
+                Debug.Log("SAttack");
 
                 AttackPlayer();
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
@@ -120,7 +120,7 @@ public class BossScript : MonoBehaviour
         {
             if (!playerInRange)
             {
-                enemyAnimator.SetTrigger("AttackExit");
+                enemyAnimator.SetTrigger("Attack");
                 state = State.ChaseTarget;
             }
         }
