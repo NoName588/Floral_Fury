@@ -662,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 1478468076}
     - target: {fileID: 3164816568587217821, guid: 13bbbfaf605d99e4f8b8cfc9fe33ed8d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7638680871751233269, guid: 13bbbfaf605d99e4f8b8cfc9fe33ed8d, type: 3}
       propertyPath: player
@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 1478468076}
     - target: {fileID: 7638680871751233269, guid: 13bbbfaf605d99e4f8b8cfc9fe33ed8d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7638680871751233269, guid: 13bbbfaf605d99e4f8b8cfc9fe33ed8d, type: 3}
       propertyPath: playerLayer.m_Bits
