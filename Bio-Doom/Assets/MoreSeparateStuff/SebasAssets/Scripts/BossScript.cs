@@ -7,7 +7,7 @@ public class BossScript : MonoBehaviour
 {
     private enum State
     {
-        Idle,
+        Roaming,
         ChaseTarget,
         Attack,
     }
@@ -29,28 +29,28 @@ public class BossScript : MonoBehaviour
 
     private void Awake()
     {
-        state = State.Idle;
+        state = State.Roaming;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         enemyPathFinding = GetComponent<EnemyNavMeshHandler>();
         startingPoint = transform.position;
         enemyAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+
+
         switch (state)
         {
             default:
-            case State.Idle:
-                Debug.Log("State Idling");
+            case State.Roaming:
+                Debug.Log("State Roaming");
 
-                //enemyPathFinding.RoamingMovement();
-                enemyAnimator.SetTrigger("Running");
+                enemyPathFinding.RoamingMovement();
+                enemyAnimator.SetTrigger("Walking");
 
                 FindTarget();
 
@@ -59,11 +59,11 @@ public class BossScript : MonoBehaviour
             case State.ChaseTarget:
                 Debug.Log("State Chasing");
 
-                //enemyAnimator.SetTrigger("Running");
+                enemyAnimator.SetTrigger("Running");
 
                 enemyPathFinding.ChasingMethod(player.transform);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
-                enemyAnimator.SetTrigger("Running");
+
                 TargetCloseRange();
                 OutOfRange();
 
@@ -72,7 +72,7 @@ public class BossScript : MonoBehaviour
                 break;
 
             case State.Attack:
-                Debug.Log("SAttack");
+                Debug.Log("State Attack");
 
                 AttackPlayer();
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
@@ -80,7 +80,6 @@ public class BossScript : MonoBehaviour
 
                 break;
         }
-
     }
 
     private void AttackPlayer()
@@ -112,15 +111,13 @@ public class BossScript : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) > targetRange)
             {
-                enemyAnimator.SetTrigger("Running");
-                state = State.Idle;
+                state = State.Roaming;
             }
         }
         else if (state == State.Attack)
         {
             if (!playerInRange)
             {
-                enemyAnimator.SetTrigger("Attack");
                 state = State.ChaseTarget;
             }
         }
