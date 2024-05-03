@@ -86,6 +86,7 @@ public class BossScript : MonoBehaviour
     {
         enemyAnimator.SetTrigger("Attack");
         enemyPathFinding.navMeshAgent.SetDestination(transform.position);
+
     }
 
     private void FindTarget()
