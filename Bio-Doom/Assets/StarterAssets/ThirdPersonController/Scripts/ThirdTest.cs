@@ -175,6 +175,7 @@ namespace StarterAssets
             Move();
             CombatSystemR();
             CombatSystemL();
+            CombatSystemS();
 
             if (_input.jump) { Debug.Log("salto"); }
 
@@ -361,6 +362,7 @@ namespace StarterAssets
                 {
 
                     Si.SetTrigger("R");
+                    Si.ResetTrigger("Smash");
                     Si.ResetTrigger("L");
                     Si.ResetTrigger("Idle");
                 }
@@ -382,6 +384,27 @@ namespace StarterAssets
                 if (_hasAnimator)
                 {
                     Si.SetTrigger("L");
+                    Si.ResetTrigger("Smash");
+                    Si.ResetTrigger("R");
+                    Si.ResetTrigger("Idle");
+                }
+            }
+            _input.Lattack = false;
+
+        }
+
+        private void CombatSystemS()
+        {
+
+
+            if (!_input.Rattack && _input.Lattack)
+            {
+                Debug.Log("SMASH");
+                // Update animator based on character existence
+                if (_hasAnimator)
+                {
+                    Si.SetTrigger("Smash");
+                    Si.ResetTrigger("L");
                     Si.ResetTrigger("R");
                     Si.ResetTrigger("Idle");
                 }
