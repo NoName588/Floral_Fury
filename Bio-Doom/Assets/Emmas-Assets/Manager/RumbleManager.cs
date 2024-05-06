@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,9 +41,32 @@ public class RumbleManager : MonoBehaviour
         }
     }
 
+    public void StopRumble(float lowFrequency, float highFrequency, float duration = 0.3f) // Combined function with optional duration
+    {
+        pad = Gamepad.current;
+
+        if (pad != null)
+        {
+            pad.SetMotorSpeeds(lowFrequency, highFrequency);
+
+            // Stop any previous rumble coroutine before starting a new one
+            if (rumbleCoroutine != null)
+            {
+                StopCoroutine(rumbleCoroutine);
+            }
+
+            rumbleCoroutine = StartCoroutine(StopRumbleAfter(duration, pad));
+        }
+    }
+
     private IEnumerator StopRumbleAfter(float duration, Gamepad pad)
     {
         yield return new WaitForSeconds(duration); // Wait for specified duration
         pad.SetMotorSpeeds(0f, 0f);
+    }
+
+    internal void StopRumble()
+    {
+        throw new NotImplementedException();
     }
 }
