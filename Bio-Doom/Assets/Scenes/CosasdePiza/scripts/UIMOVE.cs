@@ -9,7 +9,7 @@ public class UIMOVE : MonoBehaviour
     public GameObject Opciones_first_selected;
     public GameObject principal_first;
     // Start is called before the first frame update
-    public Mostraropciones() 
+    public void MostrarOpciones() 
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(Opciones_first_selected);
