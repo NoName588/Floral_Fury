@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Hojas
     second: {fileID: 2100000, guid: b01b08ea7449c2b4fb92d12487a0f1aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tronco
+    second: {fileID: 2100000, guid: 0ea55ccf498198546ac42f7741300900, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

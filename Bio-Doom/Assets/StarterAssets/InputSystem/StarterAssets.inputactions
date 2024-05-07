@@ -267,7 +267,7 @@
                 {
                     "name": "",
                     "id": "be2b4d41-bcb8-41e5-9120-e5b44fe92bc7",
-                    "path": "<Gamepad>/dpad/right",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
@@ -278,7 +278,7 @@
                 {
                     "name": "",
                     "id": "2791ceb4-0bfe-44ae-8d7a-66c1681f8f20",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -326,6 +326,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Rattack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "456c69e6-8243-4cfc-984d-205aa73f8ef0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
                     "action": "Rattack",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -14,8 +14,10 @@ namespace StarterAssets
 		public bool sprint;
 		public bool Rattack;
 		public bool Lattack;
+		public bool C1;
+        public bool C2;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
@@ -55,6 +57,16 @@ namespace StarterAssets
         {
             RattackInput(value.isPressed);
         }
+
+        public void OnC1(InputValue value)
+        {
+            C1Input(value.isPressed);
+        }
+
+        public void OnC2(InputValue value)
+        {
+            C2Input(value.isPressed);
+        }
 #endif
 
 
@@ -88,6 +100,15 @@ namespace StarterAssets
             Rattack = newRattackState;
         }
 
+        public void C1Input(bool newC1State)
+        {
+            C1 = newC1State;
+        }
+
+        public void C2Input(bool newC2State)
+        {
+            C1 = newC2State;
+        }
 
         private void OnApplicationFocus(bool hasFocus)
 		{

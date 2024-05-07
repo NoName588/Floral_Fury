@@ -106,7 +106,8 @@ namespace StarterAssets
         private int _animR;
         private int _animL;
 
-
+        public GameObject Sword_R;
+        public GameObject Sword_L;
 
 
 
@@ -164,6 +165,9 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            Sword_L.SetActive(false);
+            Sword_R.SetActive(false);
         }
 
         private void Update()
@@ -173,9 +177,11 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+
             CombatSystemR();
             CombatSystemL();
             CombatSystemS();
+
 
             if (_input.jump) { Debug.Log("salto"); }
 
@@ -296,6 +302,7 @@ namespace StarterAssets
                     Si.SetTrigger("Idle");
                     Si.ResetTrigger("Walk");
                     Si.ResetTrigger("Run");
+
                 }
                 // Walk when moving slowly
                 else if (_speed < SprintSpeed * 0.5f) // Adjust threshold as needed
@@ -309,7 +316,11 @@ namespace StarterAssets
                     Si.SetTrigger("Run");
                     Si.ResetTrigger("Walk");
                 }
+
+                Sword_L.SetActive(false);
+                Sword_R.SetActive(false);
             }
+
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
@@ -354,6 +365,8 @@ namespace StarterAssets
 
         private void CombatSystemR()
         {
+            Sword_L.SetActive(true);
+            Sword_R.SetActive(true);
             if (_input.Rattack && !_input.Lattack)
             {
                 Debug.Log("RIGHT");
@@ -376,7 +389,8 @@ namespace StarterAssets
         private void CombatSystemL()
         {
 
-
+            Sword_L.SetActive(true);
+            Sword_R.SetActive(true);
             if (!_input.Rattack && _input.Lattack)
             {
                 Debug.Log("LEFT");
@@ -395,9 +409,10 @@ namespace StarterAssets
 
         private void CombatSystemS()
         {
+            Sword_L.SetActive(true);
+            Sword_R.SetActive(true);
 
-
-            if (!_input.Rattack && _input.Lattack)
+            if (_input.C2)
             {
                 Debug.Log("SMASH");
                 // Update animator based on character existence
@@ -409,7 +424,7 @@ namespace StarterAssets
                     Si.ResetTrigger("Idle");
                 }
             }
-            _input.Lattack = false;
+            _input.C1 = false;
 
         }
 
