@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c5af0e183bdcbf847ba547dec9ee18d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6690aaf81c616914eb081c7a610a5960, type: 2}
     - target: {fileID: 919132149155446097, guid: c5af0e183bdcbf847ba547dec9ee18d4, type: 3}
       propertyPath: m_Name
       value: Oil Pump1
@@ -1676,6 +1680,34 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.083
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.364
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249122303708870019, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3295786438261489017, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.45
@@ -1703,6 +1735,30 @@ PrefabInstance:
     - target: {fileID: 3295786438261489017, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517143074509971648, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: Sword_L
+      value: 
+      objectReference: {fileID: 6121981488181477180}
+    - target: {fileID: 3517143074509971648, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: Sword_R
+      value: 
+      objectReference: {fileID: 3501516666372173285}
+    - target: {fileID: 8248904970595417551, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248904970595417551, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248904970595417551, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248904970595417551, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8906269303770849246, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: m_LocalScale.x
@@ -3924,6 +3980,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3814185294606463374, guid: 7efdb8014b1a7d0e8a1c26bf74dd3e0d, type: 3}
   m_PrefabInstance: {fileID: 2104579537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3501516666372173285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3501516666047514256, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+  m_PrefabInstance: {fileID: 753298293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6121981488181477180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6121981488783463497, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+  m_PrefabInstance: {fileID: 753298293}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
