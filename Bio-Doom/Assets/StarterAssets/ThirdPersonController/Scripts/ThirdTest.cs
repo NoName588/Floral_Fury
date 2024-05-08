@@ -183,7 +183,7 @@ namespace StarterAssets
             CombatSystemS();
 
 
-            if (_input.jump) { Debug.Log("salto"); }
+            if (_input.C2) { Debug.Log("salto"); }
 
 
             //if (R_Press) { Debug.Log("ataque izquierdp"); }
@@ -412,7 +412,7 @@ namespace StarterAssets
             Sword_L.SetActive(true);
             Sword_R.SetActive(true);
 
-            if (_input.C2)
+            if (_input.C1)
             {
                 Debug.Log("SMASH");
                 // Update animator based on character existence
