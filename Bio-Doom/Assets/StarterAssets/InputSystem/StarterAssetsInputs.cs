@@ -107,7 +107,7 @@ namespace StarterAssets
 
         public void C2Input(bool newC2State)
         {
-            C1 = newC2State;
+            C2 = newC2State;
         }
 
         private void OnApplicationFocus(bool hasFocus)
