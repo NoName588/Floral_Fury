@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Carpa
-    second: {fileID: 2100000, guid: f8d1912dc4df59742bd3e8859f1e5b85, type: 2}
+    second: {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
