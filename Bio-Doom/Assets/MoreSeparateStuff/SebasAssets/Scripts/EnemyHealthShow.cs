@@ -8,6 +8,7 @@ public class EnemyHealthShow : MonoBehaviour
     [SerializeField] private GameObject enemyObject;
     [SerializeField] private EnemyDamgeHandler enemyScript;
     [SerializeField] private GameObject cameraFollow;
+    [SerializeField] private ChangeObjectiveEnemyCount countOfObjective;
 
     private TextMeshPro textForHealth;
     private int enemyHealth;
@@ -35,6 +36,7 @@ public class EnemyHealthShow : MonoBehaviour
 
     private void DestroyGameObject()
     {
+        countOfObjective.countObjectiveEnemy += 1;
         Destroy(enemyObject);
     }
 }
