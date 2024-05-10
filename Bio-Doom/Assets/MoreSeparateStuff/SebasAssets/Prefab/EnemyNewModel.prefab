@@ -1154,6 +1154,7 @@ MonoBehaviour:
   enemyObject: {fileID: 5890706137587443737}
   enemyScript: {fileID: 3560793460562015250}
   cameraFollow: {fileID: 0}
+  countOfObjective: {fileID: 0}
 --- !u!1 &2712638129900304982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +1899,7 @@ GameObject:
   - component: {fileID: 3560793460562015250}
   - component: {fileID: 6002351401472400916}
   - component: {fileID: 6884340634791009554}
+  - component: {fileID: 825641418045577012}
   m_Layer: 8
   m_Name: EnemyNewModel
   m_TagString: Enemy
@@ -2039,6 +2041,33 @@ MonoBehaviour:
     m_Bits: 128
   targetRange: 50
   targetInCloseRange: 10
+--- !u!54 &825641418045577012
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5890706137587443737}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &5923217368130481808
 GameObject:
   m_ObjectHideFlags: 0

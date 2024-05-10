@@ -106,10 +106,6 @@ namespace StarterAssets
         private int _animR;
         private int _animL;
 
-        public GameObject Sword_R;
-        public GameObject Sword_L;
-
-
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -166,8 +162,7 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
 
-            Sword_L.SetActive(false);
-            Sword_R.SetActive(false);
+
         }
 
         private void Update()
@@ -305,7 +300,7 @@ namespace StarterAssets
 
                 }
                 // Walk when moving slowly
-                else if (_speed < SprintSpeed * 0.5f) // Adjust threshold as needed
+                else if (_speed < SprintSpeed * 0.7f) // Adjust threshold as needed
                 {
                     Si.SetTrigger("Walk");
                     Si.ResetTrigger("Run");
@@ -317,8 +312,7 @@ namespace StarterAssets
                     Si.ResetTrigger("Walk");
                 }
 
-                Sword_L.SetActive(false);
-                Sword_R.SetActive(false);
+
             }
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
@@ -365,8 +359,8 @@ namespace StarterAssets
 
         private void CombatSystemR()
         {
-            Sword_L.SetActive(true);
-            Sword_R.SetActive(true);
+            //Sword_L.SetActive(true);
+            //Sword_R.SetActive(true);
             if (_input.Rattack && !_input.Lattack)
             {
                 Debug.Log("RIGHT");
@@ -389,8 +383,8 @@ namespace StarterAssets
         private void CombatSystemL()
         {
 
-            Sword_L.SetActive(true);
-            Sword_R.SetActive(true);
+            //Sword_L.SetActive(true);
+            //Sword_R.SetActive(true);
             if (!_input.Rattack && _input.Lattack)
             {
                 Debug.Log("LEFT");
@@ -409,8 +403,8 @@ namespace StarterAssets
 
         private void CombatSystemS()
         {
-            Sword_L.SetActive(true);
-            Sword_R.SetActive(true);
+            //Sword_L.SetActive(true);
+            //Sword_R.SetActive(true);
 
             if (_input.C1)
             {
