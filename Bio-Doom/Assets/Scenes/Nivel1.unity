@@ -706,6 +706,7 @@ GameObject:
   - component: {fileID: 82391200}
   - component: {fileID: 82391199}
   - component: {fileID: 82391196}
+  - component: {fileID: 82391204}
   m_Layer: 0
   m_Name: FIGHT
   m_TagString: Untagged
@@ -764,7 +765,7 @@ MonoBehaviour:
   parentBlock: {fileID: 82391202}
   suppressBlockAutoSelect: 0
   tagFilter: []
-  FireOn: 1
+  FireOn: 4
   colliderVar: {fileID: 0}
 --- !u!136 &82391200
 CapsuleCollider:
@@ -830,8 +831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
-    y: 70
+    x: 66
+    y: 69
     width: 111
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -843,6 +844,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 82391201}
   - {fileID: 82391196}
+  - {fileID: 82391204}
   suppressAllAutoSelections: 0
 --- !u!114 &82391203
 MonoBehaviour:
@@ -857,10 +859,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 330, y: 165.5}
+  scrollPos: {x: 331, y: 131}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 305
+  blockViewHeight: 417
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -883,6 +885,27 @@ MonoBehaviour:
   hideCommands: []
   luaEnvironment: {fileID: 0}
   luaBindingName: flowchart
+--- !u!114 &82391204
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82391194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd8c931f22994b9d90e2037fffaa770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  _targetGameObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 82391194}
+  activeState:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  targetGameObjectOLD: {fileID: 0}
 --- !u!1 &95644778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5890706137587443737, guid: ee9b7f734bce5fd439fad08cab820b7b, type: 3}
@@ -1922,7 +1945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517143074509971648, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: SprintSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5191354835658690035, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: m_Controller
@@ -2276,7 +2299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &311956130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3384,7 +3407,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 68
     y: 70
-    width: 112.4
+    width: 111
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3411,7 +3434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 206.5, y: 60}
+  scrollPos: {x: 329, y: 130}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 305
@@ -3424,8 +3447,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 541243443}
-  selectedCommands:
-  - {fileID: 541243446}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -5636,7 +5658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 534080080}
+  selectedFlowchart: {fileID: 82391203}
 --- !u!4 &1165184923
 Transform:
   m_ObjectHideFlags: 1
@@ -6755,11 +6777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5606045051501228274, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 112.29
       objectReference: {fileID: 0}
     - target: {fileID: 5606045051501228274, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 92.09
       objectReference: {fileID: 0}
     - target: {fileID: 5606045051501228274, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6791,11 +6813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5606045051501228274, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -189.5
+      value: -0.0093651
       objectReference: {fileID: 0}
     - target: {fileID: 5606045051501228274, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -106.5
+      value: 0.0038834
       objectReference: {fileID: 0}
     - target: {fileID: 5606045051501228274, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6812,6 +6834,10 @@ PrefabInstance:
     - target: {fileID: 7270580106418034485, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
       propertyPath: m_Name
       value: DamageIndicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270580106418034485, guid: 8e0ea926472c05f42b7c361031e7ded7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8880,8 +8906,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350.3607, y: 152.00165}
-  m_SizeDelta: {x: 136.5254, y: 103.9967}
+  m_AnchoredPosition: {x: -339.96515, y: 152.00165}
+  m_SizeDelta: {x: 143.5102, y: 103.9967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807684704
 MonoBehaviour:
@@ -9707,8 +9733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -189.63156, y: 152.00165}
-  m_SizeDelta: {x: 28.5303, y: 103.9967}
+  m_AnchoredPosition: {x: -171.01285, y: 152.00165}
+  m_SizeDelta: {x: 29.99, y: 103.9967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016423375
 MonoBehaviour:
