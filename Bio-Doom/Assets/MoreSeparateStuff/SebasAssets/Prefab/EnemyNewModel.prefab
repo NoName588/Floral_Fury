@@ -1712,6 +1712,7 @@ GameObject:
   - component: {fileID: 6692068792914668178}
   - component: {fileID: 1066495336894155693}
   - component: {fileID: 1935679868955979814}
+  - component: {fileID: 8717047072893563317}
   m_Layer: 8
   m_Name: HitboxEnemy
   m_TagString: Untagged
@@ -1820,6 +1821,21 @@ MonoBehaviour:
   damage: 1
   lifePlayer: {fileID: 0}
   imageOfFeedback: {fileID: 0}
+--- !u!114 &8717047072893563317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224049030851919439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85480b1b4c58e84dafd113db1b78fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rumbleIntensity1: 10
+  rumbleIntensity2: 10
+  rumbleIntensity3: 0
 --- !u!1 &5570493575830200436
 GameObject:
   m_ObjectHideFlags: 0
