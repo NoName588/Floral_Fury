@@ -1645,6 +1645,7 @@ MonoBehaviour:
   enemyObject: {fileID: 987352638840837382}
   enemyScript: {fileID: 5657731929678455424}
   cameraFollow: {fileID: 0}
+  countOfObjective: {fileID: 0}
 --- !u!1 &5712037186078281613
 GameObject:
   m_ObjectHideFlags: 0
