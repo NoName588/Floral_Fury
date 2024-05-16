@@ -8,6 +8,8 @@ public class ChangeSceneWithBotton : MonoBehaviour
 {
     public void LoadScene(string scenename)
     {
+
+
         SceneManager.LoadScene(scenename);
     }
 }
