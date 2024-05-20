@@ -45,7 +45,7 @@ public class EnemyNavMeshHandler : MonoBehaviour
 
         Debug.Log("Entered calulated random");
 
-        if(NavMesh.SamplePosition(randomPoint, out hit, 0.0f, NavMesh.AllAreas))
+        if(NavMesh.SamplePosition(randomPoint, out hit, 100.0f, NavMesh.AllAreas))
         {
             Debug.Log("Entered if condition");
             result = hit.position;
@@ -58,8 +58,8 @@ public class EnemyNavMeshHandler : MonoBehaviour
         return false;
     }
 
-    public void ChasingMethod(Transform playerTransform)
+    public void ChasingMethod(Vector3 playerTransform)
     {
-        navMeshAgent.destination = playerTransform.position;
+        navMeshAgent.destination = playerTransform;
     }
 }

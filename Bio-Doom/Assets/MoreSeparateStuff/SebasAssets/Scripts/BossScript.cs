@@ -24,9 +24,11 @@ public class BossScript : MonoBehaviour
     EnemyNavMeshHandler enemyPathFinding;
 
     private Animator enemyAnimator;
-
-    private bool playerInRange = false;
-
+    public float timeReleseAttack = 5f;
+    public Vector2 randomRange, waitRandomRange;
+    private bool playerInRange = false, death;
+    public Collider[] collArms;
+    private float currentRandomAttack, timetoStop;
     private void Awake()
     {
         state = State.Roaming;
@@ -41,29 +43,28 @@ public class BossScript : MonoBehaviour
 
     private void Update()
     {
-
+       
 
         switch (state)
         {
             default:
             case State.Roaming:
                 Debug.Log("State Roaming");
-
+                if (death) return;
                 enemyPathFinding.RoamingMovement();
                 enemyAnimator.SetTrigger("Walking");
-
+                ColliderManager(false);
                 FindTarget();
 
                 break;
 
             case State.ChaseTarget:
                 Debug.Log("State Chasing");
-
+                if (death) return;
                 enemyAnimator.SetTrigger("Running");
 
-                enemyPathFinding.ChasingMethod(player.transform);
+                enemyPathFinding.ChasingMethod(player.transform.position);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
-
                 TargetCloseRange();
                 OutOfRange();
 
@@ -73,7 +74,6 @@ public class BossScript : MonoBehaviour
 
             case State.Attack:
                 Debug.Log("State Attack");
-
                 AttackPlayer();
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
                 OutOfRange();
@@ -82,19 +82,54 @@ public class BossScript : MonoBehaviour
         }
     }
 
+    private void ColliderManager(bool enabled)
+    {
+        foreach (Collider collider in collArms)
+            collider.isTrigger = enabled;
+    }
+
     private void AttackPlayer()
     {
-        enemyAnimator.SetTrigger("Attack");
-        enemyPathFinding.navMeshAgent.SetDestination(transform.position);
+        
 
+        if (timetoStop >= timeReleseAttack)
+            StartCoroutine(WaitAttack());
+        else
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) < targetInCloseRange)
+            {
+                ColliderManager(true);
+                currentRandomAttack = Random.Range(randomRange.x, randomRange.y);
+                enemyAnimator.SetFloat("RandomAttack", currentRandomAttack);
+
+                if (currentRandomAttack < 0.5f)
+                    enemyAnimator.SetTrigger("Attack");
+                else
+                    enemyAnimator.SetTrigger("Attack2");
+
+                enemyPathFinding.navMeshAgent.SetDestination(player.transform.position + new Vector3(0, 0, 2f));
+
+                timetoStop += Time.deltaTime;
+            }
+            else
+                ColliderManager(false);
+        }
+    }
+
+    private IEnumerator WaitAttack()
+    {
+        death = true;
+        enemyAnimator.SetBool("TimeToStop", death);
+        yield return new WaitForSeconds(Random.Range(waitRandomRange.x, waitRandomRange.y));
+        death = false;
+        enemyAnimator.SetBool("TimeToStop", death);
+        timetoStop = 0f;
     }
 
     private void FindTarget()
     {
         if (Vector3.Distance(transform.position, player.transform.position) < targetRange)
-        {
             state = State.ChaseTarget;
-        }
     }
 
     private void TargetCloseRange()

@@ -62,7 +62,7 @@ public class ShootingEnemy : MonoBehaviour
 
                 enemyPathFinding.navMeshAgent.isStopped = false;
                 enemyAnimator.SetTrigger("Running");
-                enemyPathFinding.ChasingMethod(player.transform);
+                enemyPathFinding.ChasingMethod(player.transform.position);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
                 //enemyAnimator.SetTrigger("Running");
                 TargetCloseRange();
