@@ -1,5 +1,7 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,11 +26,12 @@ public class BossScript : MonoBehaviour
     EnemyNavMeshHandler enemyPathFinding;
 
     private Animator enemyAnimator;
-    public float timeReleseAttack = 5f;
+    public float timeReleasAttack = 5f, rangeAttack, rotationSpeed =15;
     public Vector2 randomRange, waitRandomRange;
     private bool playerInRange = false, death;
     public Collider[] collArms;
-    private float currentRandomAttack, timetoStop;
+    private float currentRandomAttack, timeToStop, currenRotaionSpeed;
+
     private void Awake()
     {
         state = State.Roaming;
@@ -43,8 +46,6 @@ public class BossScript : MonoBehaviour
 
     private void Update()
     {
-       
-
         switch (state)
         {
             default:
@@ -52,6 +53,7 @@ public class BossScript : MonoBehaviour
                 Debug.Log("State Roaming");
                 if (death) return;
                 enemyPathFinding.RoamingMovement();
+                enemyPathFinding.navMeshAgent.stoppingDistance = 0;
                 enemyAnimator.SetTrigger("Walking");
                 ColliderManager(false);
                 FindTarget();
@@ -62,19 +64,27 @@ public class BossScript : MonoBehaviour
                 Debug.Log("State Chasing");
                 if (death) return;
                 enemyAnimator.SetTrigger("Running");
-
+                enemyPathFinding.navMeshAgent.stoppingDistance = 0;
                 enemyPathFinding.ChasingMethod(player.transform.position);
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
+                // Calcular la dirección hacia el jugador
+                Vector3 directionToPlayer = player.transform.position - transform.position;
+                directionToPlayer.y = 0; // Mantener la rotación en el plano horizontal
+
+                // Calcular la rotación deseada hacia el jugador
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+
+                // Interpolar suavemente hacia la rotación deseada
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
                 TargetCloseRange();
                 OutOfRange();
-
-                //enemyAnimator.SetTrigger("RunningExit");
-
                 break;
 
             case State.Attack:
                 Debug.Log("State Attack");
-                AttackPlayer();
+                AttackPlayer(); 
+                enemyPathFinding.navMeshAgent.stoppingDistance = 5;
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
                 OutOfRange();
 
@@ -88,42 +98,74 @@ public class BossScript : MonoBehaviour
             collider.isTrigger = enabled;
     }
 
+    public bool isAttackChosen = false; // Variable para controlar si el ataque ya fue elegido
+
     private void AttackPlayer()
     {
-        
-
-        if (timetoStop >= timeReleseAttack)
+        if (timeToStop >= timeReleasAttack)
+        {
             StartCoroutine(WaitAttack());
+            isAttackChosen = false; // Reiniciar para el próximo ataque
+        }
         else
         {
             if (Vector3.Distance(transform.position, player.transform.position) < targetInCloseRange)
             {
+                // Calcular la dirección hacia el jugador
+                Vector3 directionToPlayer = player.transform.position - transform.position;
+                directionToPlayer.y = 0; // Mantener la rotación en el plano horizontal
+
+                // Calcular la rotación deseada hacia el jugador
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+
+                // Interpolar suavemente hacia la rotación deseada
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
                 ColliderManager(true);
-                currentRandomAttack = Random.Range(randomRange.x, randomRange.y);
-                enemyAnimator.SetFloat("RandomAttack", currentRandomAttack);
 
-                if (currentRandomAttack < 0.5f)
-                    enemyAnimator.SetTrigger("Attack");
-                else
-                    enemyAnimator.SetTrigger("Attack2");
-
-                enemyPathFinding.navMeshAgent.SetDestination(player.transform.position + new Vector3(0, 0, 2f));
-
-                timetoStop += Time.deltaTime;
+                // Seleccionar el ataque solo una vez por ciclo de ataque
+                if (!isAttackChosen)
+                {
+                    currentRandomAttack = Random.Range(randomRange.x, randomRange.y);
+                    enemyAnimator.SetFloat("RandomAttack", currentRandomAttack);
+                    isAttackChosen = true; // Marcar que el ataque ha sido elegido
+                    currenRotaionSpeed = rotationSpeed;
+                    // Configurar la animación de ataque basada en el ataque elegido
+                    if (currentRandomAttack < 0.5f)
+                    {
+                        enemyAnimator.SetBool("Attack", true);
+                        enemyAnimator.SetBool("Attack2", false);
+                    }
+                    else
+                    {
+                        enemyAnimator.SetBool("Attack", false);
+                        enemyAnimator.SetBool("Attack2", true);
+                    }
+                }
+                currenRotaionSpeed = rotationSpeed/2;
+                enemyPathFinding.navMeshAgent.SetDestination(player.transform.position);
+                timeToStop += Time.deltaTime;
             }
             else
+            {
                 ColliderManager(false);
+                enemyAnimator.SetBool("Attack", false);
+                enemyAnimator.SetBool("Attack2", false);
+                timeToStop = 0f;
+                isAttackChosen = false; // Reiniciar para el próximo ciclo de ataque
+            }
         }
     }
-
     private IEnumerator WaitAttack()
     {
-        death = true;
+        death = true; 
+        enemyAnimator.SetBool("Attack", false);
+        enemyAnimator.SetBool("Attack2", false);
         enemyAnimator.SetBool("TimeToStop", death);
         yield return new WaitForSeconds(Random.Range(waitRandomRange.x, waitRandomRange.y));
         death = false;
         enemyAnimator.SetBool("TimeToStop", death);
-        timetoStop = 0f;
+        timeToStop = 0f;
     }
 
     private void FindTarget()
@@ -157,5 +199,10 @@ public class BossScript : MonoBehaviour
                 state = State.ChaseTarget;
             }
         }
+    }
+    private void SetAttack(AnimationEvent animationEvent)
+    {
+        Debug.Log("hola");
+        isAttackChosen = false;
     }
 }

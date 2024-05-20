@@ -3515,6 +3515,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1282003969419833620, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       insertIndex: -1
       addedObject: {fileID: 565807404}
+    - targetCorrespondingSourceObject: {fileID: 1282003969419833620, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 565807420}
   m_SourcePrefab: {fileID: 100100000, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
 --- !u!4 &565807399 stripped
 Transform:
@@ -3605,6 +3608,22 @@ CapsuleCollider:
   m_Height: 2.5848708
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!208 &565807420
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565807403}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.4, y: 1.23, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.29, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &710683637
 GameObject:
   m_ObjectHideFlags: 0
@@ -5649,12 +5668,15 @@ MonoBehaviour:
     m_Bits: 128
   targetRange: 30
   targetInCloseRange: 7.8
-  timeReleseAttack: 5
+  timeReleasAttack: 5
+  rangeAttack: 2.94
+  rotationSpeed: 15
   randomRange: {x: 0, y: 1}
   waitRandomRange: {x: 5, y: 8}
   collArms:
   - {fileID: 6009281803291720656}
   - {fileID: 296733423}
+  isAttackChosen: 0
 --- !u!33 &3402989915525389737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6415,6 +6437,7 @@ GameObject:
   - component: {fileID: 3210787281979542691}
   - component: {fileID: 4542517661229380199}
   - component: {fileID: 1704328006263184480}
+  - component: {fileID: 8578114968166782422}
   m_Layer: 8
   m_Name: boss
   m_TagString: Enemy
@@ -6422,6 +6445,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &8578114968166782422
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578114968166782421}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 80
+  m_CollisionDetection: 1
 --- !u!4 &8585881322765260640
 Transform:
   m_ObjectHideFlags: 0
