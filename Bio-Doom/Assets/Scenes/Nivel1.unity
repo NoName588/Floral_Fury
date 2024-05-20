@@ -6333,7 +6333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1050413455}
   countObjectiveEnemy: 0
-  countToGetObjective: 6
+  countToGetObjective: 7
   sceneToLoad: escenario_2
 --- !u!114 &1212568420
 MonoBehaviour:
