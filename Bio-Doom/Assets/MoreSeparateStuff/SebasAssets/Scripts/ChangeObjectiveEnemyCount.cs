@@ -21,6 +21,7 @@ public class ChangeObjectiveEnemyCount : MonoBehaviour
 
     private void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -30,17 +31,20 @@ public class ChangeObjectiveEnemyCount : MonoBehaviour
 
         if(countObjectiveEnemy == countToGetObjective)
         {
-            LoadLevel();
-            SceneManager.LoadScene(sceneToLoad);
+            StartCoroutine(LoadLevel());
+       
         }
     }
 
 
     IEnumerator LoadLevel()
     {
+
         animator.SetTrigger("Start");
 
         yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(sceneToLoad);
 
     }
 }
