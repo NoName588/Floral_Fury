@@ -42,7 +42,7 @@ public class ChangeObjectiveEnemyCount : MonoBehaviour
 
         animator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene(sceneToLoad);
 
