@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CosasdePiza/EscenaMenu.unity
-    guid: 0326de2ce20791949accf0129f9ef51e
-  - enabled: 1
-    path: Assets/Emmas-Assets/Animation_Intro.unity
-    guid: fe3297fbbe1ae86439a30885ff28cc67
-  - enabled: 1
     path: Assets/Scenes/CosasdePiza/menu de pausa.unity
     guid: 6da2084e1aac0cb40940ba8c5560326b
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/CosasdePiza/EscenaMenu.unity
+    guid: 0326de2ce20791949accf0129f9ef51e
+  - enabled: 0
+    path: Assets/Emmas-Assets/Animation_Intro.unity
+    guid: fe3297fbbe1ae86439a30885ff28cc67
+  - enabled: 0
     path: Assets/Scenes/Credits.unity
     guid: 9e44e80df9d8fdc4a84a05e3a6ebf4ad
   - enabled: 0
