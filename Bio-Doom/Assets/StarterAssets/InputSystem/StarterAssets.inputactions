@@ -277,11 +277,33 @@
                 },
                 {
                     "name": "",
+                    "id": "21a1ba5d-5b20-4e80-96a8-339e6d3e2b2e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "C1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2791ceb4-0bfe-44ae-8d7a-66c1681f8f20",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "C2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4068a37-c89e-4084-96d8-7d7a33c111e8",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
                     "action": "C2",
                     "isComposite": false,
                     "isPartOfComposite": false
