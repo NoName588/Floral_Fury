@@ -8,6 +8,10 @@ public class ChangeObjectiveEnemyCount : MonoBehaviour
 {
     public Animator animator;
 
+    public int wait1 = 1;
+
+    public int wait2 = 3;
+
     private TMP_Text textTMP;
     public int countObjectiveEnemy = 0;
 
@@ -39,10 +43,11 @@ public class ChangeObjectiveEnemyCount : MonoBehaviour
 
     IEnumerator LoadLevel()
     {
+        yield return new WaitForSeconds(wait1);
 
         animator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(wait2);
 
         SceneManager.LoadScene(sceneToLoad);
 
