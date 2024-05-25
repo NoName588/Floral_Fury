@@ -9,6 +9,8 @@ public class EnemyHealthShow : MonoBehaviour
     [SerializeField] private EnemyDamgeHandler enemyScript;
     [SerializeField] private GameObject cameraFollow;
     [SerializeField] private ChangeObjectiveEnemyCount countOfObjective;
+    [SerializeField] private Animator enemyAnimator;
+    [SerializeField] private EnemyNavMeshHandler enemyPathFinding;
 
     private TextMeshPro textForHealth;
     private int enemyHealth;
@@ -37,6 +39,8 @@ public class EnemyHealthShow : MonoBehaviour
     private void DestroyGameObject()
     {
         countOfObjective.countObjectiveEnemy += 1;
-        Destroy(enemyObject);
+        //Destroy(enemyObject);
+        enemyAnimator.SetTrigger("Dead");
+        enemyPathFinding.navMeshAgent.isStopped = true;
     }
 }
