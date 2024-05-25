@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDamgeHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject attackHitbox;
+    [SerializeField] private BoxCollider attckCollider;
 
     public int lifeEnemy = 20;
     public int enemyDamage;
@@ -12,7 +12,7 @@ public class EnemyDamgeHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackHitbox.SetActive(false);
+        attckCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -23,11 +23,11 @@ public class EnemyDamgeHandler : MonoBehaviour
 
     public void Attack()
     {
-        attackHitbox.SetActive(true);
+        attckCollider.enabled = true;
     }
 
     public void AttackOFF()
     {
-        attackHitbox.SetActive(false);
+        attckCollider.enabled = false;
     }
 }
