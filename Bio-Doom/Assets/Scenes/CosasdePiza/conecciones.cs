@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class conecciones : MonoBehaviour
+public class ChangeSceneWithBotton : MonoBehaviour
 {
     public void LoadScene(string scenename)
     {
