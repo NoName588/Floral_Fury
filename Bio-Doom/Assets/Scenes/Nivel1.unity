@@ -2511,15 +2511,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.00537
+      value: 63.74
       objectReference: {fileID: 0}
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 58.38675
+      value: 55.63
       objectReference: {fileID: 0}
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -70.9736
+      value: -78.26
       objectReference: {fileID: 0}
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6760,7 +6760,7 @@ MonoBehaviour:
   wait1: 1
   wait2: 3
   countObjectiveEnemy: 0
-  countToGetObjective: 7
+  countToGetObjective: 6
   sceneToLoad: escenario_2
 --- !u!114 &1212568420
 MonoBehaviour:
@@ -9772,11 +9772,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.107504345
+      value: -0.127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0883908
+      value: 1.089
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10506,11 +10506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.107504345
+      value: -0.127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.9046878
+      value: 0.905
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11355,6 +11355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loader: EscenaMenu
+  wait: 3
   animator: {fileID: 1050413455}
 --- !u!114 &2041144965
 MonoBehaviour:
@@ -11689,11 +11690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.107504345
+      value: -0.127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1022179
+      value: 1.103
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4672a7485baac7446af1b3a7e9f504f4, type: 3}
       propertyPath: m_LocalRotation.w

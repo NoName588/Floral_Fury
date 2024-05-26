@@ -17,7 +17,7 @@ public class LifePlaceHolderHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(life == 0)
+        if(life <= 0)
         {
             animator.SetTrigger("IsDead");
             gameOverCanvas.SetActive(true);
