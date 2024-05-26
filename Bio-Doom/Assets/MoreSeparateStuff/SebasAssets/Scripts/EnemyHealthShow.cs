@@ -13,6 +13,7 @@ public class EnemyHealthShow : MonoBehaviour
     [SerializeField] private Animator enemyAnimator;
     [SerializeField] private NavMeshAgent enemyPathFinding;
     [SerializeField] private GameObject objectOfShow;
+    [SerializeField] private MeleeEnemy enemyMainMove;
 
     private TextMeshPro textForHealth;
     private int enemyHealth;
@@ -45,5 +46,6 @@ public class EnemyHealthShow : MonoBehaviour
         enemyAnimator.SetTrigger("Dead");
         enemyPathFinding.isStopped = true;
         objectOfShow.SetActive(false);
+        enemyPathFinding.enabled = false;
     }
 }

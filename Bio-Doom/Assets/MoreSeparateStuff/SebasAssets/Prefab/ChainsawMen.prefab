@@ -681,6 +681,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 5764969954171424839}
   enemyPathFinding: {fileID: 6973863452727682474}
   objectOfShow: {fileID: 1416361932611930897}
+  enemyMainMove: {fileID: 4189538588072953391}
 --- !u!1 &2010897709429453648
 GameObject:
   m_ObjectHideFlags: 0
