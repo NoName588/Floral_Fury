@@ -430,6 +430,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint
       value: 
@@ -1053,6 +1057,10 @@ PrefabInstance:
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint
@@ -1874,7 +1882,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
 --- !u!1 &259191797 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 475437852825155834, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1282003969419833620, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
   m_PrefabInstance: {fileID: 259191796}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &259191798 stripped
@@ -2241,6 +2249,10 @@ PrefabInstance:
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint
@@ -2897,7 +2909,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8147781970384774086, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
   m_PrefabInstance: {fileID: 259191796}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 259191797}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af870cfc9222e21458d3517a14b7d969, type: 3}
@@ -4376,6 +4388,10 @@ PrefabInstance:
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint
@@ -6741,6 +6757,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint
       value: 
@@ -7515,6 +7535,10 @@ PrefabInstance:
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint
@@ -9594,6 +9618,10 @@ PrefabInstance:
     - target: {fileID: 5677517112346826506, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156556217402546607, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7712154476643475391, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: centrePoint

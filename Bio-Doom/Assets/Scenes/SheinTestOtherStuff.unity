@@ -2745,7 +2745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277588467}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18021457, y: -0.06677767, z: 0.012263871, w: 0.98128134}
+  m_LocalRotation: {x: 0.18021455, y: -0.06677768, z: 0.012263873, w: 0.98128134}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4781,7 +4781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114241970}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16238303, y: -0.06698916, z: 0.011050408, w: 0.9843892}
+  m_LocalRotation: {x: 0.16238303, y: -0.066989176, z: 0.0110504115, w: 0.9843892}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7039,6 +7039,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   enemyPathFinding: {fileID: 0}
   objectOfShow: {fileID: 0}
+  enemyMainMove: {fileID: 0}
 --- !u!1 &3047284247208749078
 GameObject:
   m_ObjectHideFlags: 0
@@ -7640,10 +7641,6 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 3107978563525048883}
-    - target: {fileID: 2416148765226637632, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
-      propertyPath: enemyPathFinding
-      value: 
-      objectReference: {fileID: 3727886877222482366}
     - target: {fileID: 4189538588072953391, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
       propertyPath: player
       value: 
@@ -7712,11 +7709,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
---- !u!195 &3727886877222482366 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 6973863452727682474, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
-  m_PrefabInstance: {fileID: 3727886877222482365}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3742394135582631407
 Transform:
   m_ObjectHideFlags: 0
@@ -9405,7 +9397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3107978563525048883}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18021461, y: -0.06677767, z: 0.012263873, w: 0.98128134}
+  m_LocalRotation: {x: 0.18021458, y: -0.0667777, z: 0.012263876, w: 0.98128134}
   m_LocalPosition: {x: 270.97546, y: 15.5416, z: 225.37115}
   m_LocalScale: {x: 3.28, y: 3.28, z: 3.28}
   m_ConstrainProportionsScale: 0
@@ -10027,10 +10019,6 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 3107978563525048883}
-    - target: {fileID: 2117051769838793097, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
-      propertyPath: enemyPathFinding
-      value: 
-      objectReference: {fileID: 6657326131067858969}
     - target: {fileID: 2498880017140438511, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: player
       value: 
@@ -10099,11 +10087,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
---- !u!195 &6657326131067858969 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 1798985886826546032, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
-  m_PrefabInstance: {fileID: 6657326131067858968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6675749482535906635
 Transform:
   m_ObjectHideFlags: 0
