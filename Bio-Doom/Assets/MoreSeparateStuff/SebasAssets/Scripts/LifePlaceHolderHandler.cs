@@ -6,6 +6,7 @@ public class LifePlaceHolderHandler : MonoBehaviour
 {
     public int life = 20;
     [SerializeField] private GameObject gameOverCanvas;
+    [SerializeField] public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class LifePlaceHolderHandler : MonoBehaviour
     {
         if(life == 0)
         {
+            animator.SetTrigger("IsDead");
             gameOverCanvas.SetActive(true);
         }
         else if(life > 0)
