@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public class EnemyHealthShow : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemyHealthShow : MonoBehaviour
     [SerializeField] private GameObject cameraFollow;
     [SerializeField] private ChangeObjectiveEnemyCount countOfObjective;
     [SerializeField] private Animator enemyAnimator;
-    [SerializeField] private EnemyNavMeshHandler enemyPathFinding;
+    [SerializeField] private NavMeshAgent enemyPathFinding;
     [SerializeField] private GameObject objectOfShow;
 
     private TextMeshPro textForHealth;
@@ -42,7 +43,7 @@ public class EnemyHealthShow : MonoBehaviour
         countOfObjective.countObjectiveEnemy += 1;
         //Destroy(enemyObject);
         enemyAnimator.SetTrigger("Dead");
-        enemyPathFinding.navMeshAgent.isStopped = true;
+        enemyPathFinding.isStopped = true;
         objectOfShow.SetActive(false);
     }
 }

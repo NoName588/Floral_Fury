@@ -7038,6 +7038,7 @@ MonoBehaviour:
   countOfObjective: {fileID: 0}
   enemyAnimator: {fileID: 0}
   enemyPathFinding: {fileID: 0}
+  objectOfShow: {fileID: 0}
 --- !u!1 &3047284247208749078
 GameObject:
   m_ObjectHideFlags: 0
@@ -7639,6 +7640,10 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 3107978563525048883}
+    - target: {fileID: 2416148765226637632, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
+      propertyPath: enemyPathFinding
+      value: 
+      objectReference: {fileID: 3727886877222482366}
     - target: {fileID: 4189538588072953391, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
       propertyPath: player
       value: 
@@ -7707,6 +7712,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
+--- !u!195 &3727886877222482366 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 6973863452727682474, guid: 751119dc5fb98b74b89a17dfdd6b7f0c, type: 3}
+  m_PrefabInstance: {fileID: 3727886877222482365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3742394135582631407
 Transform:
   m_ObjectHideFlags: 0
@@ -10017,6 +10027,10 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 3107978563525048883}
+    - target: {fileID: 2117051769838793097, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      propertyPath: enemyPathFinding
+      value: 
+      objectReference: {fileID: 6657326131067858969}
     - target: {fileID: 2498880017140438511, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       propertyPath: player
       value: 
@@ -10085,6 +10099,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+--- !u!195 &6657326131067858969 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 1798985886826546032, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+  m_PrefabInstance: {fileID: 6657326131067858968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6675749482535906635
 Transform:
   m_ObjectHideFlags: 0

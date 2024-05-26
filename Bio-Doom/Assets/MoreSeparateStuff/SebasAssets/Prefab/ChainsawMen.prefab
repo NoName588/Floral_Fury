@@ -679,7 +679,7 @@ MonoBehaviour:
   cameraFollow: {fileID: 0}
   countOfObjective: {fileID: 0}
   enemyAnimator: {fileID: 5764969954171424839}
-  enemyPathFinding: {fileID: 8722852481212827610}
+  enemyPathFinding: {fileID: 6973863452727682474}
   objectOfShow: {fileID: 1416361932611930897}
 --- !u!1 &2010897709429453648
 GameObject:
