@@ -680,6 +680,7 @@ MonoBehaviour:
   countOfObjective: {fileID: 0}
   enemyAnimator: {fileID: 5764969954171424839}
   enemyPathFinding: {fileID: 8722852481212827610}
+  objectOfShow: {fileID: 1416361932611930897}
 --- !u!1 &2010897709429453648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1853,7 @@ GameObject:
   - component: {fileID: 8722852481212827610}
   - component: {fileID: 1415331633352832948}
   - component: {fileID: 4189538588072953391}
+  - component: {fileID: 3457503547668788087}
   m_Layer: 8
   m_Name: ChainsawMen
   m_TagString: Enemy
@@ -1931,7 +1933,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1992,6 +1994,33 @@ MonoBehaviour:
     m_Bits: 128
   targetRange: 50
   targetInCloseRange: 10
+--- !u!54 &3457503547668788087
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739341138218977623}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 94
+  m_CollisionDetection: 3
 --- !u!1 &6763313326042564088
 GameObject:
   m_ObjectHideFlags: 0
