@@ -19,6 +19,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] float targetRange, targetInCloseRange;
 
+
     private Vector3 startingPoint;
 
     EnemyNavMeshHandler enemyPathFinding;
@@ -77,6 +78,7 @@ public class MeleeEnemy : MonoBehaviour
 
                 AttackPlayer();
                 playerInRange = Physics.CheckSphere(transform.position, targetInCloseRange, playerLayer);
+                
                 OutOfRange();
 
                 break;

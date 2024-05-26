@@ -9,6 +9,8 @@ public class EnemyDamgeHandler : MonoBehaviour
     public int lifeEnemy = 20;
     public int enemyDamage;
 
+    public AudioSource sound;
+    public AudioClip Admin;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +26,12 @@ public class EnemyDamgeHandler : MonoBehaviour
     public void Attack()
     {
         attckCollider.enabled = true;
+        sound.PlayOneShot(Admin);
     }
 
     public void AttackOFF()
     {
         attckCollider.enabled = false;
+        sound.Pause();
     }
 }
