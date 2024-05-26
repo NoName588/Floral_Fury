@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/IntroAnim.unity
+    guid: 1fe5005af3a493146861b98e1bf2b5d2
+  - enabled: 1
     path: Assets/Scenes/CosasdePiza/Menuprincipal.unity
     guid: d673a38a33510104db2e674fa3f2570a
   - enabled: 1
