@@ -111,7 +111,7 @@ public class BossScript : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) < targetInCloseRange)
             {
-                // Calcular la dirección hacia el jugador
+                /* Calcular la dirección hacia el jugador
                 Vector3 directionToPlayer = player.transform.position - transform.position;
                 directionToPlayer.y = 0; // Mantener la rotación en el plano horizontal
 
@@ -120,7 +120,7 @@ public class BossScript : MonoBehaviour
 
                 // Interpolar suavemente hacia la rotación deseada
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+                */
                 ColliderManager(true);
 
                 // Seleccionar el ataque solo una vez por ciclo de ataque

@@ -5359,6 +5359,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5156838759349559790, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1567552740}
     - targetCorrespondingSourceObject: {fileID: 4596757874330106013, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -5568,6 +5571,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492100864}
   m_CullTransparentMesh: 1
+--- !u!1 &1567552732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5156838759349559790, guid: c7932f4d08116234f90dd5f7582e5d2a, type: 3}
+  m_PrefabInstance: {fileID: 1413611121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1567552740
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567552732}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1584000663
 GameObject:
   m_ObjectHideFlags: 0
@@ -7180,9 +7215,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   targetRange: 30
-  targetInCloseRange: 7.8
+  targetInCloseRange: 12
   timeReleasAttack: 5
-  rangeAttack: 50
+  rangeAttack: 15
   rotationSpeed: 15
   randomRange: {x: 0, y: 1}
   waitRandomRange: {x: 5, y: 8}
