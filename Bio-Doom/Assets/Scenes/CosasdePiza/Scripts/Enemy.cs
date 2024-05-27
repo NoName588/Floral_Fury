@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public enum NativeEnemyStates { Patroling, Chasing, Attacking };
+   /* public enum NativeEnemyStates { Patroling, Chasing, Attacking };
     public NativeEnemyStates nativeState = NativeEnemyStates.Patroling;
     public enum AttackTypeStates { Melee, Distance }
     public AttackTypeStates nativeAttackState = AttackTypeStates.Melee;
@@ -200,4 +200,5 @@ public class Enemy : MonoBehaviour
         Handles.color = color;
         Handles.DrawWireDisc(center, normal, radius);
     }
+*/
 }

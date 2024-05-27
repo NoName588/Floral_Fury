@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class NativeEnemy : MonoBehaviour
 {
-    Enemy enemy;
+   /* Enemy enemy;
 
     private void Start()
     {
@@ -41,5 +41,5 @@ public class NativeEnemy : MonoBehaviour
             Enemy enemy = target.GetComponentInParent<Enemy>();
             this.enemy.enemiesList.Remove(enemy);
         }
-    }
+    }*/
 }
