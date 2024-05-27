@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CosasdePiza/Menuprincipal.unity
-    guid: d673a38a33510104db2e674fa3f2570a
-  - enabled: 1
-    path: Assets/Scenes/EmmaTestScene.unity
-    guid: 6da2084e1aac0cb40940ba8c5560326b
-  - enabled: 1
-    path: Assets/Emmas-Assets/Animation_Intro.unity
-    guid: fe3297fbbe1ae86439a30885ff28cc67
-  - enabled: 0
-    path: Assets/Scenes/SebasTestScene3.unity
-    guid: 65dd19944ed3d60449b551b3bcad95dd
+    path: Assets/Scenes/IntroAnim.unity
+    guid: 1fe5005af3a493146861b98e1bf2b5d2
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 9e44e80df9d8fdc4a84a05e3a6ebf4ad
@@ -32,5 +23,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Boss-Final.unity
     guid: b3543334fc5668242bdcc50d3643f54b
+  - enabled: 1
+    path: Assets/Scenes/Trans1-2.unity
+    guid: 2a58a6b277002e940b2803184353b7e6
+  - enabled: 1
+    path: Assets/Scenes/Trans2-3.unity
+    guid: ee0e099a1e91fd44eb1c4867de6ff5da
+  - enabled: 1
+    path: Assets/MenuLogro.unity
+    guid: 4f631fa050455034293c86cd2a814a17
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

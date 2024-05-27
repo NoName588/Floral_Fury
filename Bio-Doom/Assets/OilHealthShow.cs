@@ -11,6 +11,8 @@ public class OilHealthShow : MonoBehaviour
     [SerializeField] private GameObject cameraFollow;
     [SerializeField] private ChangeObjectiveEnemyCount countOfObjective;
 
+    public AudioSource Audi;
+    public AudioClip Sonido;
     public GameObject win;
 
     private TextMeshPro textForHealth;
@@ -42,8 +44,9 @@ public class OilHealthShow : MonoBehaviour
         countOfObjective.countObjectiveEnemy += 1;
 
         win.SetActive(true);
-
+        Audi.PlayOneShot(Sonido);
         Destroy(enemyObject);
+
         Debug.Log("nivel ganado");
     }
 }

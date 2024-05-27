@@ -15,6 +15,9 @@ public class EnemyHealthShow : MonoBehaviour
     [SerializeField] private GameObject objectOfShow;
     [SerializeField] private MeleeEnemy enemyMainMove;
 
+    public AudioSource Audi;
+    public AudioClip Sonido;
+
     private TextMeshPro textForHealth;
     private int enemyHealth;
 
@@ -47,5 +50,6 @@ public class EnemyHealthShow : MonoBehaviour
         enemyPathFinding.isStopped = true;
         objectOfShow.SetActive(false);
         enemyPathFinding.enabled = false;
+        Audi.PlayOneShot(Sonido);
     }
 }
