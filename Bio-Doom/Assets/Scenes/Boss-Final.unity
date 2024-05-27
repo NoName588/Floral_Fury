@@ -1820,6 +1820,7 @@ GameObject:
   - component: {fileID: 482634238}
   - component: {fileID: 482634237}
   - component: {fileID: 482634236}
+  - component: {fileID: 482634239}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -1901,6 +1902,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482634234}
   m_CullTransparentMesh: 1
+--- !u!114 &482634239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482634234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4107702cdc831245a4a4388593ceb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiempoEspera: 2
+  nombreEscena: EscenaMenu
 --- !u!1001 &523325403
 PrefabInstance:
   m_ObjectHideFlags: 0
