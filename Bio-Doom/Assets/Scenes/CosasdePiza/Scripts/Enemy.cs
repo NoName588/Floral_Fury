@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
@@ -189,14 +190,14 @@ public class Enemy : MonoBehaviour
         DrawWireDisc(settings.colors[3], transform.position, transform.up, settings.meleeAttackRadius);
         DrawWireDisc(settings.colors[4], transform.position, transform.up, settings.searchRadius);
         DrawWireDisc(colorsFov[0], transform.position, transform.up, settings.detectionRadius);
-        UnityEditor.Handles.color = colorsFov[1];
+        Handles.color = colorsFov[1];
         Vector3 rotatedForward = Quaternion.Euler(0, -settings.detectionAngle * 0.5f, 0) * transform.forward;
-        UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.up, rotatedForward, settings.detectionAngle, settings.detectionRadius);
+        Handles.DrawSolidArc(transform.position, Vector3.up, rotatedForward, settings.detectionAngle, settings.detectionRadius);
     }
 
     public void DrawWireDisc(Color color, Vector3 center, Vector3 normal, float radius)
     {
-        UnityEditor.Handles.color = color;
-        UnityEditor.Handles.DrawWireDisc(center, normal, radius);
+        Handles.color = color;
+        Handles.DrawWireDisc(center, normal, radius);
     }
 }
