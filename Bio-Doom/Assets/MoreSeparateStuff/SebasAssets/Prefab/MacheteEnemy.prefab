@@ -1167,7 +1167,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 21da89948d0aec548bcc5d756a4159ed, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 40125c4cedfaaf04aae97f6d1767b15a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   lifeEnemy: 20
   enemyDamage: 2
   sound: {fileID: 2204564919444732167}
-  Admin: {fileID: 8300000, guid: 21da89948d0aec548bcc5d756a4159ed, type: 3}
+  Admin: {fileID: 8300000, guid: 40125c4cedfaaf04aae97f6d1767b15a, type: 3}
 --- !u!114 &2498880017140438511
 MonoBehaviour:
   m_ObjectHideFlags: 0

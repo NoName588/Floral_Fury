@@ -10,6 +10,9 @@ public class PlayerDamageDealt : MonoBehaviour
     private List<EnemyDamgeHandler> enemiesListDetected = new List<EnemyDamgeHandler>();
     //private List<EnemyDamgeHandler> bossListDetected = new List<EnemyDamgeHandler>();
 
+    public AudioSource source;
+    public AudioClip clip;
+
     // Start is called before the first frame update
 
 
@@ -23,6 +26,7 @@ public class PlayerDamageDealt : MonoBehaviour
             {
                 enemiesListDetected.Add(enemyLifeHandler);
                 enemyLifeHandler.lifeEnemy -= damageToEnemy;
+                source.PlayOneShot(clip);
             }
         }
 
@@ -36,6 +40,7 @@ public class PlayerDamageDealt : MonoBehaviour
             if (enemyLifeHandler != null && enemiesListDetected.Contains(enemyLifeHandler))
             {
                 enemiesListDetected.Remove(enemyLifeHandler);
+                source.Stop();
             }
         }
     }
