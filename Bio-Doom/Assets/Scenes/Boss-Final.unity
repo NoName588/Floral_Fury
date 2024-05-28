@@ -1861,9 +1861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3324fb10247104bad16f9b8ef22e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loader: EscenaMenu
-  wait: 3
-  animator: {fileID: 1732125729}
 --- !u!114 &482634237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3667,7 +3664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8147781970384774086, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: life
-      value: 30
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 8147781970384774086, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: animator
@@ -5707,8 +5704,8 @@ RectTransform:
   m_GameObject: {fileID: 1010926714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.72084, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.62093157, y: 0.8614, z: 0.8614}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1012695953}
   - {fileID: 566319736}
@@ -5716,7 +5713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -498.8, y: -27.2}
+  m_AnchoredPosition: {x: -534.79, y: -16.528}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1010926716
@@ -7597,7 +7594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1732125727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7629,9 +7626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3324fb10247104bad16f9b8ef22e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loader: 
-  wait: 3
-  animator: {fileID: 1732125729}
 --- !u!95 &1732125729
 Animator:
   serializedVersion: 5
@@ -7792,8 +7786,8 @@ RectTransform:
   m_GameObject: {fileID: 1840356468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1324999, y: 1.1324999, z: 1.1324999}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.92, y: 0.92, z: 0.92}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1285655005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8167,8 +8161,8 @@ RectTransform:
   m_GameObject: {fileID: 1917185355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1324999, y: 1.1324999, z: 1.1324999}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.92, y: 0.92, z: 0.92}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1285655005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8881,7 +8875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4cbf8e0c2b7f7d44bddc4016f687e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
   lifePlayer: {fileID: 1679907480}
   imageOfFeedback: {fileID: 2105024938}
 --- !u!1 &2114283753834967212
@@ -9130,7 +9124,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   targetRange: 30
-  targetInCloseRange: 12
+  targetInCloseRange: 20
   timeReleasAttack: 5
   rangeAttack: 15
   rotationSpeed: 15

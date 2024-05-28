@@ -950,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af870cfc9222e21458d3517a14b7d969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 20
+  life: 70
   gameOverCanvas: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &6127441015536866560
