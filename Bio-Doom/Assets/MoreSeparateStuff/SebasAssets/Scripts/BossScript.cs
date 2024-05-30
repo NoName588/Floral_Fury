@@ -21,6 +21,9 @@ public class BossScript : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] float targetRange, targetInCloseRange;
 
+    public AudioSource Audio;
+    public AudioClip Clip;
+
     private Vector3 startingPoint;
 
     EnemyNavMeshHandler enemyPathFinding;
@@ -158,7 +161,8 @@ public class BossScript : MonoBehaviour
     }
     private IEnumerator WaitAttack()
     {
-        death = true; 
+        death = true;
+        Audio.PlayOneShot(Clip);
         enemyAnimator.SetBool("Attack", false);
         enemyAnimator.SetBool("Attack2", false);
         enemyAnimator.SetBool("TimeToStop", death);
