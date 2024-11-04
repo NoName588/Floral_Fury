@@ -6433,7 +6433,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 85f7a78fcd22d1a4c9150a600ce58e57, type: 2}
     - target: {fileID: 8147781970384774086, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: life
-      value: 125
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8147781970384774086, guid: 21ee022c97be31941bdbd029f735e085, type: 3}
       propertyPath: animator
